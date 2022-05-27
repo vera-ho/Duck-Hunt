@@ -1,0 +1,29 @@
+@import "./styles/reset";
+@import "./styles/canvas";
+@import "./styles/navigation";
+@import "./styles/controls";
+
+// Header
+h1 {
+    font-size: 45px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position:absolute;
+    // left: 5%;
+    // top: 5%;
+}
+
+// "About" Modal
+#information-container {
+    position: absolute;
+    // right: 15%;
+    // top: 10%;
+}
+
+// Footer
+#footnotes {
+    font-size: small;
+    font-family:'Courier New', Courier, monospace;
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+}

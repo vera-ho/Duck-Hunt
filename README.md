@@ -26,13 +26,14 @@ In addition, this project will include:
 # Timeline
 ## Day 0: Planning and Research
 Plan the project timeline, tasks, and search for assets. The assets will include sprites for the birds and the Dog. Research how to animate using sprite sheets and how to add sound effects.
-- [ ] General HTML Canvas research
+- [X] General HTML Canvas research
 
 ## Day 1: Research and Setup
 Continue any remaining research from Day 0 and begin the project setup. 
-- [ ] Complete skeleton setup
+- [X] Complete skeleton setup
 - [ ] Animating with sprite sheets
 - [ ] Adding sound
+- [ ] Mouse tracking within canvas
 - [ ] Collision detection on click event
 
 ## Day 2: Set Up Classes and Properties

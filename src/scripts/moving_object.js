@@ -3,33 +3,37 @@ export default class MovingObject {
         this.pos = obj.pos;
         this.vel = obj.vel;
         this.game = obj.game;
+        this.imgSize = obj.imgSize;
+        this.frameSize = obj.frameSize;
+        this.maxFrame = obj.maxFrame;
     }
 
-    animate(gameboard, sprite, maxFrame, frameSize) {
+    animate(gameboard, sprite) {
         let currentFrame = 0;
         let col = 0;
         let row = 1;
         let numCol = 3;
         let numRow = 1;
-        let duckAngle = 115;
+        let duckAngle = 155;
 
         setInterval( () => {
             currentFrame++;
-            if(currentFrame > maxFrame) currentFrame = 0;
-
+            if(currentFrame > this.maxFrame) currentFrame = 0;
             col = currentFrame % numCol;
 
-            gameboard.ctx.clearRect(0, 0, gameboard.canvas.width, gameboard.canvas.height);
-            gameboard.ctx.drawImage(sprite, col * frameSize, duckAngle + row * frameSize, frameSize, frameSize, this.pos[0], this.pos[1], 65, 65);
-            gameboard.ctx.drawImage(sprite, col * frameSize, duckAngle, frameSize, frameSize, 250, 215, 65, 65);
-        }, 100)
+            
+            gameboard.ctx.clearRect(this.pos[0], this.pos[1], this.imgSize, this.imgSize);
+            this.move();
+            gameboard.ctx.drawImage(sprite, col * this.frameSize, duckAngle + row * this.frameSize, 
+                    this.frameSize, this.frameSize, this.pos[0], this.pos[1], this.imgSize, this.imgSize);
+        }, 90) 
 
     }
 
     move() {
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
-        this.pos = this.game.bounce(this.pos);
+        // this.pos = this.game.bounce(this.pos);
     }
 
 }

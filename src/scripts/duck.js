@@ -7,13 +7,15 @@ export default class Duck extends MovingObject {
         this.type = obj.type;
         this.frameSize = 40;
         this.maxFrame = 3;
+        this.pos = this.randomPosition();
     }
 
     // Starting random x position (y is always bottom of screen)
     randomPosition() {
         let pos = [];
-        pos[0] = Math.floor(Math.random() * 600 );
-        pos[1] = 0; 
+        pos[0] = Math.floor(Math.random() * 800);
+        pos[1] = 550; 
+        return pos;
     }
 
 }

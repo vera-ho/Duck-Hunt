@@ -36,16 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
             imgSize: 65
         });
 
-        let duck3 = new Duck({
-            duckType: "green",
-            pos: [700, 300],
-            vel: [-10, 10],
-            imgSize: 65
-        });
+        // let duck3 = new Duck({
+        //     duckType: "green",
+        //     pos: Duck.randomPosition(),
+        //     vel: [-10, 10],
+        //     imgSize: 65
+        // });
 
         duck1.animate(gameboard, ducks);
         duck2.animate(gameboard, ducks);
-        duck3.animate(gameboard, ducks);
+        // duck3.animate(gameboard, ducks);
 
 
 

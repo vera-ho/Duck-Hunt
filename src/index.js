@@ -1,10 +1,14 @@
 import Canvas from "./scripts/canvas";
+import Duck from "./scripts/duck";
+
+// Load assets to environment
+const foregroundPath = "./assets/duckhunt_transparent_nicepng.png";
+const spritePath = "./assets/duckhunt_various_sheet.png";
+
+const DIMX = 800;
+const DIMY = 528;
 
 document.addEventListener("DOMContentLoaded", () => {
-    const DIMX = 800;
-    const DIMY = 528;
-    const foregroundPath = "./assets/duckhunt_transparent_nicepng.png";
-
     // Canvas Setup
     const background = new Canvas("canvas-background", DIMX, DIMY);        
     const gameboard = new Canvas("canvas-gameboard", DIMX, DIMY);
@@ -13,4 +17,25 @@ document.addEventListener("DOMContentLoaded", () => {
     background.setColor("skyblue");
     foreground.setImage(foregroundPath);
     
+    // Duck Testing - Animation with Sprite
+    let ducks = new Image();
+    ducks.src = spritePath;
+    ducks.onload = function() {
+        // animate(gameboard);
+        let duck = new Duck({
+            duckType: "green",
+            pos: [400, 200],
+            vel: [10, 10]
+        });
+
+        duck.animate(gameboard, ducks, 3, 40);
+
+
+
+
+
+
+
+
+    }
 })

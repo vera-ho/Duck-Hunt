@@ -19,7 +19,7 @@ export default class Game {
 
     // onclick
     startGame() {
-        // 
+        
     }
 
     // onclick
@@ -35,5 +35,23 @@ export default class Game {
     // win or lose condition triggered
     stopGame() {
 
+    }
+
+    // Duck reaches canvas border
+    // Currently wraps, need to add physics for bounce
+    bounce(pos) {
+        if(pos[0] < 0) {
+            pos[0] = DIMX;
+        }
+        if(pos[0] > DIMX){
+            pos[0] = 0;
+        }
+        if(pos[1] < 0) {
+            pos[1] = DIMY;
+        }
+        if(pos[1] > DIMY) {
+            pos[1] = 0;
+        }
+        return pos;
     }
 }

@@ -1,7 +1,7 @@
 ![Duck Hunt](https://i.imgur.com/yjncFVL.jpg)
 
 # Background
-Duck Hunt is an 80's retro game where the player takes Dog to go duck hunting. In this project, the player will "hunt" the flying ducks using their mouse or trackpad. Points are given for successful hunts and the player has 3 lives - or 3 misses - before the game over.
+Duck Hunt is an 80's retro game where the player takes Dog to go duck hunting. In this project to create a clone of the game, the player will "hunt" the flying ducks using their mouse or trackpad. Points are given for successful hunts and the player has 3 lives - or 3 misses - before the game over.
 
 # Functionality
 In Duck Hunt, users will be able to:
@@ -31,14 +31,13 @@ Plan the project timeline, tasks, and search for assets. The assets will include
 ## Day 1: Research and Setup
 Continue any remaining research from Day 0 and begin the project setup. 
 - [X] Complete skeleton setup
-- [ ] Animating with sprite sheets
-- [ ] Adding sound
-- [ ] Mouse tracking within canvas
-- [ ] Collision detection on click event
+- [X] Animating with sprite sheets
+- [X] Adding sound
+- [X] ~~Collision detection on click event~~ Duck elements will have click event listener
 
 ## Day 2: Set Up Classes and Properties
 Create classes for the UI, the Dog, bird objects, the timer, the life count and the score.
-- [ ] Render canvas and background
+- [X] Render canvas and background
 - [ ] Render the dog and bird objects
     - No event handlers at this time
     - No collision detection at this time

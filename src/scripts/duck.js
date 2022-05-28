@@ -1,10 +1,12 @@
 import MovingObject from "./moving_object";
+import { DIMX, DIMY } from "../index";
 
 export default class Duck extends MovingObject {
     constructor(obj) {
         if(!obj.type) obj.type = "green";
         super(obj);
         this.type = obj.type;
+        this.imgSize = 65;
         this.frameSize = 40;
         this.maxFrame = 3;
         this.pos = this.randomPosition();
@@ -17,14 +19,31 @@ export default class Duck extends MovingObject {
         pos[1] = 550; 
         return pos;
     }
+    
+    move() {
+        this.pos[0] += this.vel[0];
+        this.pos[1] += this.vel[1];
+        this.pos = this.bounce(this.pos);
+    }
+
+    // Duck reaches canvas border
+    // Currently wraps, need to add physics for bounce
+    bounce(pos) {
+        if(pos[0] < 0 || pos[0] > (DIMX)) {
+            this.vel[0] = -this.vel[0];
+        }
+        if(pos[1] < -(this.imgSize)) {
+            pos[1] = DIMY;
+        }
+        if(pos[1] > DIMY) {
+            pos[1] = -(this.imgSize);
+        }
+        return pos;
+    }
 
 }
 
 /** Duck parameters **/
-// Duck frame
-const duckFrame = 40;
-const duckAnglePos = 115;
-const frameSize = 40;   // square
 
 // Green Duck - Slow
 // Sprite starts 127 x 115 px

@@ -3,27 +3,37 @@
 @import "./styles/navigation";
 @import "./styles/controls";
 
+// Body wide
+body {
+    background-color: #2b3b48;
+    color: lightseagreen
+}
+
+// Main Section
+#main-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 700px;
+}
+
 // Header
 h1 {
     font-size: 45px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position:absolute;
-    // left: 5%;
-    // top: 5%;
-}
-
-// "About" Modal
-#information-container {
-    position: absolute;
-    // right: 15%;
-    // top: 10%;
+    left: 0px;
+    top: 5%;
 }
 
 // Footer
 #footnotes {
     font-size: small;
     font-family:'Courier New', Courier, monospace;
-    position: absolute;
-    left: 50%;
-    bottom: 10%;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    // left: 50%;
 }

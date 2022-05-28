@@ -60,22 +60,54 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: 2px solid black;
+}
+
+#navigation-bar {
+  position: absolute;
+  top: 5%;
+  right: 0px;
+}
+
+#navigation-bar ul {
+  display: flex;
+}
+
+a {
+  color: inherit;
+}
+
+i {
+  margin: 5px;
+  padding: 5px;
+}
+
+body {
+  background-color: #2b3b48;
+  color: lightseagreen;
+}
+
+#main-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 700px;
 }
 
 h1 {
   font-size: 45px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   position: absolute;
-}
-
-#information-container {
-  position: absolute;
+  left: 0px;
+  top: 5%;
 }
 
 #footnotes {
   font-size: small;
   font-family: "Courier New", Courier, monospace;
-  position: absolute;
-  left: 50%;
-  bottom: 10%;
+  text-align: center;
+  position: fixed;
+  bottom: 0px;
 }

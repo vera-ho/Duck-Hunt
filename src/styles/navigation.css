@@ -1,0 +1,18 @@
+#navigation-bar {
+    position: absolute;
+    top: 5%;
+    right: 0px;
+}
+
+#navigation-bar ul {
+    display: flex;
+}
+
+a {
+    color: inherit;
+}
+
+i {
+    margin: 5px;
+    padding: 5px;
+}

@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pos: [600, 100],
             vel: [-10, -10],
             game: game, 
-            frameRate: 70
+            frameRate: 60
         });
 
         duck1.animate(gameboard.ctx, sprite);

@@ -15,30 +15,27 @@ export default class Duck extends MovingObject {
     // Starting random x position (y is always bottom of screen)
     randomPosition() {
         let pos = [];
-        pos[0] = Math.floor(Math.random() * 800);
-        pos[1] = 550; 
+        pos[0] = Math.floor(Math.random() * DIMX);
+        pos[1] = DIMY - this.frameSize; 
         return pos;
     }
     
     move() {
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
-        this.pos = this.bounce(this.pos);
+        this.bounce(this.pos);
     }
 
     // Duck reaches canvas border
-    // Currently wraps, need to add physics for bounce
     bounce(pos) {
-        if(pos[0] < 0 || pos[0] > (DIMX)) {
+        console.log("bounce start");
+        if(pos[0] < 0 || pos[0] > DIMX) {
             this.vel[0] = -this.vel[0];
         }
-        if(pos[1] < -(this.imgSize)) {
-            pos[1] = DIMY;
+        if(pos[1] < 0 || pos[1] > DIMY - this.frameSize) {
+            console.log("top of canvas");
+            this.vel[1] = -this.vel[1];
         }
-        if(pos[1] > DIMY) {
-            pos[1] = -(this.imgSize);
-        }
-        return pos;
     }
 
 }

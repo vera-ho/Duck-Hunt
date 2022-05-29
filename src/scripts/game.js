@@ -7,7 +7,7 @@ const spritePath = "./assets/duckhunt_various_sheet.png";
 export default class Game {
 
     constructor(gameboard) {
-        this.NUM_DUCKS = 2;
+        this.NUM_DUCKS = 1;
         this.gameboard = gameboard;
         this.ctx = gameboard.ctx;
         this.round = 1;
@@ -20,7 +20,7 @@ export default class Game {
             let vy = Math.floor((Math.random() * 2) + 1);
             let duck = new Duck({
                 game: this,
-                vel: [vx, vy]
+                vel: [0.5, 0.5]
             });
 
             this.duckArray.push(duck);
@@ -29,6 +29,12 @@ export default class Game {
         // Load sprite
         this.sprite = new Image();
         this.sprite.src = spritePath;
+
+        // Onclick Listener
+        // gameboard.canvas.addEventListener("click", (e) => {
+        //     alert("HI");
+        //     console.log(e);
+        // })
 
         // Dog instance
         // Dog intro animation

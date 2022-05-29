@@ -43,8 +43,8 @@ export default class Duck extends MovingObject {
 
     draw(ctx, sprite, pos) {
         // Flap the duck - need to slow it down - frame rate issue
-        this.col++;
-        this.col = this.col % this.maxFrame;
+        // this.col++;
+        // this.col = this.col % this.maxFrame;
 
         this.move();
         if(this.vel[0] < 0) {

@@ -24,4 +24,38 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("timeout")
         game.startGame();
     }, 1000);
+
+    foreground.canvas.addEventListener("click", (e) => {
+        // alert("HI");
+        console.log(e);
+        let bound = foreground.canvas.getBoundingClientRect();
+        console.log("bounding: " + bound);
+        let x = e.clientX - bound.left;
+        let y = e.clientY - bound.top;
+        console.log("Bouncing click x and y: " + x + " and " + y);
+        console.log("Duck X box: " + (game.duckArray[0].pos[0] - 65/2) + " and " + (game.duckArray[0].pos[0] + 65/2))
+        console.log("Duck Y box: " + (game.duckArray[0].pos[1] - 65/2) + " and " + (game.duckArray[0].pos[1] + 65/2))
+        
+        // draw hitbox and duck box
+
+        foreground.ctx.beginPath();
+        foreground.ctx.rect(x-32, y - 32,65 , 65);
+        foreground.ctx.strokeStyle = "red";
+        foreground.ctx.stroke();
+
+        if(game.duckArray[0].vel[0] < 0) {
+            // debugger
+            foreground.ctx.beginPath();
+            foreground.ctx.rect(game.duckArray[0].pos[0] - 65, game.duckArray[0].pos[1], 65, 65);
+            foreground.ctx.strokeStyle = "yellow";
+            foreground.ctx.stroke();
+        } else {
+            foreground.ctx.beginPath();
+            foreground.ctx.rect(game.duckArray[0].pos[0], game.duckArray[0].pos[1], 65, 65);
+            foreground.ctx.strokeStyle = "yellow";
+            foreground.ctx.stroke();
+        }
+
+        debugger
+    })
 })

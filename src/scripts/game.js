@@ -7,19 +7,22 @@ const spritePath = "./assets/duckhunt_various_sheet.png";
 export default class Game {
 
     constructor(gameboard) {
-        this.NUM_DUCKS = 5;
+        this.NUM_DUCKS = 2;
         this.gameboard = gameboard;
         this.ctx = gameboard.ctx;
         this.round = 1;
+        this.prevTime = 0;
 
+        this.duckDivs = [];
         this.duckArray = [];
         for(let i = 0; i < this.NUM_DUCKS; i++) {
-            let vx = Math.floor((Math.random() * 3) + 2);
-            let vy = Math.floor((Math.random() * 2) + 2);
+            let vx = Math.floor((Math.random() * 5) + 1);
+            let vy = Math.floor((Math.random() * 2) + 1);
             let duck = new Duck({
                 game: this,
                 vel: [vx, vy]
             });
+
             this.duckArray.push(duck);
         }
 
@@ -33,7 +36,6 @@ export default class Game {
         // listener for start button click
         // start game count down timer
         // startGame();
-        console.log("started new game instance");
     }
 
     // onclick
@@ -41,14 +43,19 @@ export default class Game {
         window.requestAnimationFrame(this.gameLoop.bind(this));
     }
 
-    gameLoop() {
-        console.log("gameloop");
+    gameLoop(timestamp) {
+        // let timePassed = (timestamp - this.prevTime) / 1000;
+        // this.prevTime = timestamp;
+
+        // if(timePassed > 75) {
         this.gameboard.clear();
         this.duckArray.forEach( (duck) => {
-            duck.draw(this.ctx, this.sprite, duck.pos, 0, 0);
+            // duck.move(timePassed);
+            duck.move();
+            duck.draw(this.ctx, this.sprite, duck.pos);
         })
-        // debugger
         window.requestAnimationFrame(this.gameLoop.bind(this));
+        // }
     }
 
     // onclick

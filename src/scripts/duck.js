@@ -4,12 +4,15 @@ import { DIMX, DIMY } from "../index";
 export default class Duck extends MovingObject {
     constructor(obj) {
         if(!obj.type) obj.type = "green";
+        if(!obj.row) obj.row = 0;
         super(obj);
         this.type = obj.type;       // bird color
         this.imgSize = 65;          // sprite
         this.frameSize = 40;        // rendered on canvas
         this.maxFrame = 3;
         this.pos = this.randomPosition();
+        this.col = 0;
+        this.row = 0;
         // this.vel = this.randomVelocity(10);
     }
 
@@ -38,19 +41,37 @@ export default class Duck extends MovingObject {
         }
     }
 
-    draw(ctx, sprite, pos, col, row) {
+    draw(ctx, sprite, pos) {
+        // Flap the duck - need to slow it down - frame rate issue
+        this.col++;
+        this.col = this.col % this.maxFrame;
+
         this.move();
         if(this.vel[0] < 0) {
             ctx.save();
             ctx.scale(-1, 1);
-            this.move();
-            ctx.drawImage(sprite, col * this.frameSize + greenDuckPos[0], this.frameSize + greenDuckPos[1], 
-                this.frameSize, this.frameSize, -pos[0], pos[1], this.imgSize, this.imgSize);
+            // this.move();
+            ctx.drawImage(sprite, 
+                this.col * this.frameSize + greenDuckPos[0], 
+                this.row * this.frameSize + greenDuckPos[1], 
+                this.frameSize, 
+                this.frameSize, 
+                -pos[0], 
+                pos[1], 
+                this.imgSize, 
+                this.imgSize);
             ctx.restore();
-        } else {
-            this.move();
-            ctx.drawImage(sprite, col * this.frameSize + blueDuckPos[0], this.frameSize + blueDuckPos[1], 
-                this.frameSize, this.frameSize, pos[0], pos[1], this.imgSize, this.imgSize);
+        } else { 
+            // this.move();
+            ctx.drawImage(sprite, 
+                this.col * this.frameSize + greenDuckPos[0], 
+                this.row * this.frameSize + greenDuckPos[1], 
+                this.frameSize, 
+                this.frameSize, 
+                pos[0], 
+                pos[1], 
+                this.imgSize, 
+                this.imgSize);
         }
     }
 }

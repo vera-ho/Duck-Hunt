@@ -38,17 +38,16 @@ Continue any remaining research from Day 0 and begin the project setup.
 ## Day 2: Set Up Classes and Properties
 Create classes for the UI, the Dog, bird objects, the timer, the life count and the score.
 - [X] Render canvas and background
-- [ ] Render the dog and bird objects
-    - No event handlers at this time
-    - No collision detection at this time
+- [X] Render navigation bar and control buttons
+- [x] Render the duck objects (w/o event handling)
+- [ ] Render dog object (w/o event handling)
 - [ ] Render the timer, life count and score count
     - Graphics only, not operational at this time
-- [ ] Render navigation bar and control buttons
 
 ## Day 3 - 5: All Game Logic
 Work on all the game logic.
-- [ ] Bird movement logic
-- [ ] Collision and event handling logic
+- [X] Bird movement logic
+- [ ] Event handling logic
 - [ ] Game play logic
     - Points for successful hunt
     - Game over logic
@@ -74,7 +73,7 @@ Make it pretty, make it glow.
 
 # Project Checklist
 The live project:
-- [ ] Link to portfolio website, Github account, LinkedIn account
+- [X] Link to portfolio website, Github account, LinkedIn account
 - [ ] Landing page/modal with clear instructions
 - [ ] Interactive
 - [ ] Styled, clean frontend
@@ -83,8 +82,8 @@ The live project:
 Production README:
 - [ ] Link to live project 
 - [ ] Instructions to play or interact with the project
-- [ ] List of technologies, libraries, APIs used
+- [X] List of technologies, libraries, APIs used
 - [ ] Technical implementation details with clean code snippets
-- [ ] To-dos and future features
-- [ ] No .DS_store files, debugger, console.logs
-- [ ] Organized file structure with /src and /dist directories
+- [X] To-dos and future features
+- [X] No .DS_store files, debugger, console.logs
+- [X] Organized file structure with /src and /dist directories

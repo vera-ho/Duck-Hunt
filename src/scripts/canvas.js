@@ -15,15 +15,13 @@ export default class Canvas {
     }
 
     setColor(color) {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.clear();
         this.ctx.fillStyle = color;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
     clear() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.fillStyle = "transparent";
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 

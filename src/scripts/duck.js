@@ -5,51 +5,74 @@ export default class Duck extends MovingObject {
     constructor(obj) {
         if(!obj.type) obj.type = "green";
         super(obj);
-        this.type = obj.type;
-        this.imgSize = 65;
-        this.frameSize = 40;
+        this.type = obj.type;       // bird color
+        this.imgSize = 65;          // sprite
+        this.frameSize = 40;        // rendered on canvas
         this.maxFrame = 3;
         this.pos = this.randomPosition();
+        // this.vel = this.randomVelocity(10);
     }
 
-    // Starting random x position (y is always bottom of screen)
+    // Starting random x position
     randomPosition() {
         let pos = [];
         pos[0] = Math.floor(Math.random() * DIMX);
-        pos[1] = DIMY - this.frameSize; 
+        pos[1] = DIMY - (3 * this.frameSize);       // always start behind bushes
         return pos;
     }
     
+    // Increment duck position
     move() {
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
-        this.bounce(this.pos);
+        this.bounce(this.pos); 
     }
 
     // Duck reaches canvas border
     bounce(pos) {
-        console.log("bounce start");
         if(pos[0] < 0 || pos[0] > DIMX) {
             this.vel[0] = -this.vel[0];
         }
-        if(pos[1] < 0 || pos[1] > DIMY - this.frameSize) {
-            console.log("top of canvas");
+        if(pos[1] < 0 || pos[1] > DIMY - (3 * this.frameSize)) {
             this.vel[1] = -this.vel[1];
         }
     }
 
+    draw(ctx, sprite, pos, col, row) {
+        this.move();
+        if(this.vel[0] < 0) {
+            ctx.save();
+            ctx.scale(-1, 1);
+            this.move();
+            ctx.drawImage(sprite, col * this.frameSize + greenDuckPos[0], this.frameSize + greenDuckPos[1], 
+                this.frameSize, this.frameSize, -pos[0], pos[1], this.imgSize, this.imgSize);
+            ctx.restore();
+        } else {
+            this.move();
+            ctx.drawImage(sprite, col * this.frameSize + blueDuckPos[0], this.frameSize + blueDuckPos[1], 
+                this.frameSize, this.frameSize, pos[0], pos[1], this.imgSize, this.imgSize);
+        }
+    }
 }
 
+//set bird sprite, in constructor?
+// if abs(vel[1]) > 7
+//     use 2nd row of sprite (horizontal)
+// else if abs(vel[1]) < 7
+//     use 1st row of sprite (angled)
+
 /** Duck parameters **/
-
-// Green Duck - Slow
-// Sprite starts 127 x 115 px
-
-// Blue Duck - Medium
-// Sprite starts 0 x 115 px
-
-// Red Duck - Fast
-// Sprite starts 256 x 115px
+// Flight Direction
+// row 0 = horizontal
+// row 1 = diagonal
+// row 2 = up
+// row 3 = shot and falling
+const HORIZONTAL = 0;
+const DIAGONAL = 1;
+const UP = 2
+const greenDuckPos = [127, 115];    // Green Duck - Slow
+const blueDuckPos = [0, 115];       // Blue Duck - Medium
+const redDuckPos = [256, 115];      // Red Duck - Fast
 
 // Animation Notes
 // this.ctx.drawImage(                          Parameter Type:

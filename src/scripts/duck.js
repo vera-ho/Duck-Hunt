@@ -13,6 +13,7 @@ export default class Duck extends MovingObject {
         this.pos = this.randomPosition();
         this.col = 0;
         this.row = 0;
+        this.flying = true;
         // this.vel = this.randomVelocity(10);
     }
 

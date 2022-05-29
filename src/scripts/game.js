@@ -12,6 +12,7 @@ export default class Game {
         this.ctx = gameboard.ctx;
         this.round = 1;
         this.prevTime = 0;
+        this.animating = true;
 
         this.duckDivs = [];
         this.duckArray = [];
@@ -45,7 +46,7 @@ export default class Game {
     }
 
     // onclick
-    startGame() {
+    start() {
         window.requestAnimationFrame(this.gameLoop.bind(this));
     }
 
@@ -58,9 +59,12 @@ export default class Game {
         this.duckArray.forEach( (duck) => {
             // duck.move(timePassed);
             duck.move();
-            duck.draw(this.ctx, this.sprite, duck.pos);
+            if(duck.flying) duck.draw(this.ctx, this.sprite, duck.pos);
         })
-        window.requestAnimationFrame(this.gameLoop.bind(this));
+
+        if(this.duckArray.length && this.animating) {
+            window.requestAnimationFrame(this.gameLoop.bind(this));
+        }
         // }
     }
 

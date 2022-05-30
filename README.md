@@ -40,7 +40,7 @@ Create classes for the UI, the Dog, bird objects, the timer, the life count and 
 - [X] Render canvas and background
 - [X] Render navigation bar and control buttons
 - [x] Render the duck objects (w/o event handling)
-- [ ] Render dog object (w/o event handling)
+- [x] Render dog object (w/o event handling)
 - [ ] Render the timer, life count and score count
     - Graphics only, not operational at this time
 

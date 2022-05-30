@@ -3,6 +3,13 @@
 @import "./styles/navigation";
 @import "./styles/controls";
 
+@font-face {
+    font-family: duckhunt;
+    src: url(../assets/font/m29.TTF);
+}
+
+$main-font: duckhunt;
+
 // Body wide
 body {
     background-color: #2b3b48;
@@ -22,7 +29,7 @@ body {
 // Header
 h1 {
     font-size: 45px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: $main-font, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position:absolute;
     left: 0px;
     top: 5%;

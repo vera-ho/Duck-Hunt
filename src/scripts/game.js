@@ -7,7 +7,7 @@ const spritePath = "./assets/duckhunt_various_sheet.png";
 export default class Game {
 
     constructor(gameboard) {
-        this.NUM_DUCKS = 1;
+        this.NUM_DUCKS = 10;
         this.gameboard = gameboard;
         this.ctx = gameboard.ctx;
         this.round = 1;

@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 10);  // make sure sprite is loaded before starting game
 
     foreground.canvas.addEventListener("click", (e) => {
-        huntEventListener(e, foreground, game)
+        huntEventListener(e, foreground, game);
     })
 })
 
@@ -36,8 +36,9 @@ function huntEventListener(e, foreground, game) {
     let hit_x = e.clientX - bound.left;
     let hit_y = e.clientY - bound.top;
 
-    // cycle ducks and check if any were hit
-    game.duckArray.forEach( (duck) => {
+    for(let i = 0; i < game.duckArray.length; i++) {
+        let duck = game.duckArray[i];
+
         // Set hit box
         let xUpBound = duck.pos[0] + duck.imgSize;
         let yUpBound = duck.pos[1] + duck.imgSize;
@@ -49,19 +50,26 @@ function huntEventListener(e, foreground, game) {
             xLowBound = duck.pos[0] - duck.imgSize;
         }
 
-        if(hit_x < xUpBound && hit_x > xLowBound && hit_y < yUpBound && hit_y > yLowBound) { //sucessful hunt
+        if(hit_x < xUpBound && hit_x > xLowBound && 
+           hit_y < yUpBound && hit_y > yLowBound) { //sucessful hunt
             // stop flying animation
             console.log("Hit!")
             duck.flying = false;
-            game.duckArray = game.duckArray.filter( (ele) => { !duck });
+            game.duckArray = game.duckArray.filter( (ele, idx) => { 
+                return i !== idx;
+            });
             
             // run successful hunt animation
+            
+
+
+            break;
         } else { // failed hunt
             // decrease shot counter
-            console.log("Miss!")
+            console.log("Miss! Haha.")
 
             // animate laughing dog
         }
-    })
+    }
 }
 

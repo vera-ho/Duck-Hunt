@@ -4,17 +4,22 @@ import { DIMX, DIMY } from "../index";
 export default class Duck extends MovingObject {
     constructor(obj) {
         if(!obj.type) obj.type = "green";
-        if(!obj.row) obj.row = 0;
+        if(!obj.spriteRow) obj.spriteRow = 0;
+        if(!obj.spriteCol) obj.spriteCol = 0;
+
         super(obj);
-        this.type = obj.type;       // bird color
         this.imgSize = 65;          // rendered on canvas
         this.frameSize = 40;        // sprite
         this.maxFrame = 3;
         this.pos = this.randomPosition();
-        this.col = 0;
-        this.row = 0;
+        this.spriteCol = obj.spriteCol;
+        this.spriteRow = obj.spriteRow;
+
+        // unique to duck
         this.flying = true;
         this.timeElapsed = 0;
+        this.type = obj.type;       // bird color
+
         // this.vel = this.randomVelocity(10);
     }
 
@@ -22,7 +27,7 @@ export default class Duck extends MovingObject {
     randomPosition() {
         let pos = [];
         pos[0] = Math.floor(Math.random() * DIMX);
-        pos[1] = DIMY - (3 * this.frameSize);       // always start behind bushes
+        pos[1] = DIMY - (2.5 * this.frameSize);       // always start behind bushes
         return pos;
     }
     
@@ -38,27 +43,28 @@ export default class Duck extends MovingObject {
         if(pos[0] < 0 || pos[0] > DIMX) {
             this.vel[0] = -this.vel[0];
         }
-        if(pos[1] < 0 || pos[1] > DIMY - (3 * this.frameSize)) {
+        if(pos[1] < 0 || pos[1] > DIMY - (2.5 * this.frameSize)) {
             this.vel[1] = -this.vel[1];
         }
     }
 
     draw(ctx, sprite, pos, time) {
         // Flap the duck - need to slow it down - frame rate issue
+        // make flapDuck()
         this.timeElapsed += time;
         if(this.timeElapsed > 90) {
             this.timeElapsed = 0;
-            this.col++;
-            this.col = this.col % this.maxFrame;
+            this.spriteCol++;
+            this.spriteCol = this.spriteCol % this.maxFrame;
         }
 
-        this.move();
+        // Refactor
         if(this.vel[0] < 0) {
             ctx.save();
             ctx.scale(-1, 1);
             ctx.drawImage(sprite, 
-                this.col * this.frameSize + greenDuckPos[0], 
-                this.row * this.frameSize + greenDuckPos[1], 
+                this.spriteCol * this.frameSize + greenDuckPos[0], 
+                this.spriteRow * this.frameSize + greenDuckPos[1], 
                 this.frameSize, 
                 this.frameSize, 
                 -pos[0], 
@@ -68,8 +74,8 @@ export default class Duck extends MovingObject {
             ctx.restore();
         } else { 
             ctx.drawImage(sprite, 
-                this.col * this.frameSize + greenDuckPos[0], 
-                this.row * this.frameSize + greenDuckPos[1], 
+                this.spriteCol * this.frameSize + greenDuckPos[0], 
+                this.spriteRow * this.frameSize + greenDuckPos[1], 
                 this.frameSize, 
                 this.frameSize, 
                 pos[0], 
@@ -80,7 +86,6 @@ export default class Duck extends MovingObject {
     }
 
     spazz(ctx, sprite, pos) {
-        console.log("spazzing");
         ctx.drawImage(sprite,
             0 * this.frameSize + greenDuckPos[0], 
             3 * this.frameSize + greenDuckPos[1],
@@ -90,8 +95,6 @@ export default class Duck extends MovingObject {
     }
     
     fall(ctx, sprite, pos) {
-        console.log("falling");
-        this.move();
         ctx.drawImage(sprite,
             1 * this.frameSize + greenDuckPos[0], 
             3 * this.frameSize + greenDuckPos[1],

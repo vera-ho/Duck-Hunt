@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     foreground.setImage(foregroundPath);
     
     // Duck Testing - Animation with Sprite
-    let game = new Game(gameboard);
+    let game = new Game(gameboard, foreground);
     setTimeout(()=> {       // Future: use start on click listener
         game.start();
     }, 10);  // make sure sprite is loaded before starting game
@@ -59,9 +59,13 @@ function huntEventListener(e, foreground, game) {
             duck.vel = [0, 0];
             duck.flying = false;
 
+            // update game
+            game.score++;
+
         } else { // failed hunt
             // decrease shot counter
             console.log("Miss! Haha.")
+            // game.ammo--;
 
             // animate laughing dog
 

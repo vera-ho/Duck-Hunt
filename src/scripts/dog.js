@@ -1,8 +1,11 @@
 import MovingObject from "./moving_object";
+import { DIMX, DIMY } from "../index";
 
-export default class Dog {
+export default class Dog extends MovingObject {
     constructor(obj) {
-        obj.imgSize = 60;
+        if(!obj.imgSize) obj.imgSize = 100;
+        if(!obj.pos) obj.pos = [-100, 400];
+        if(!obj.vel) obj.vel = [5, 0];
         super(obj);
     }
 
@@ -21,3 +24,19 @@ export default class Dog {
 
     }
 }
+
+
+    // // debugger
+    // // draw dog 
+    // this.dog.move();
+    // // this.foreground.clear();
+    // // this.foreground.setImage("./assets/duckhunt_transparent_nicepng.png");
+    // this.foreground.ctx.drawImage(this.sprite, 
+    //     0, 
+    //     0, 
+    //     this.dog.frameSize, 
+    //     this.dog.frameSize,
+    //     this.dog.pos[0], 
+    //     this.dog.pos[1], 
+    //     this.dog.imgSize, 
+    //     this.dog.imgSize);

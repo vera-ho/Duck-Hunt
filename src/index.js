@@ -36,7 +36,7 @@ function huntEventListener(e, foreground, game) {
     let hit_x = e.clientX - bound.left;
     let hit_y = e.clientY - bound.top;
 
-    for(let i = 0; i < game.duckArray.length; i++) {
+    for(let i = 0; i < game.duckArray.length; i++) {  // change back to forEach?
         let duck = game.duckArray[i];
 
         // Set hit box
@@ -50,25 +50,21 @@ function huntEventListener(e, foreground, game) {
             xLowBound = duck.pos[0] - duck.imgSize;
         }
 
+         //successful hunt
         if(hit_x < xUpBound && hit_x > xLowBound && 
-           hit_y < yUpBound && hit_y > yLowBound) { //sucessful hunt
+           hit_y < yUpBound && hit_y > yLowBound) {
+
             // stop flying animation
             console.log("Hit!")
+            duck.vel = [0, 0];
             duck.flying = false;
-            game.duckArray = game.duckArray.filter( (ele, idx) => { 
-                return i !== idx;
-            });
-            
-            // run successful hunt animation
-            
 
-
-            break;
         } else { // failed hunt
             // decrease shot counter
             console.log("Miss! Haha.")
 
             // animate laughing dog
+
         }
     }
 }

@@ -29,7 +29,7 @@ export default class Duck extends MovingObject {
     move() {
         this.pos[0] += this.vel[0];
         this.pos[1] += this.vel[1];
-        this.bounce(this.pos); 
+        if(this.flying) this.bounce(this.pos); 
     }
 
     // Duck reaches canvas border
@@ -51,7 +51,6 @@ export default class Duck extends MovingObject {
         if(this.vel[0] < 0) {
             ctx.save();
             ctx.scale(-1, 1);
-            // this.move();
             ctx.drawImage(sprite, 
                 this.col * this.frameSize + greenDuckPos[0], 
                 this.row * this.frameSize + greenDuckPos[1], 
@@ -63,7 +62,6 @@ export default class Duck extends MovingObject {
                 this.imgSize);
             ctx.restore();
         } else { 
-            // this.move();
             ctx.drawImage(sprite, 
                 this.col * this.frameSize + greenDuckPos[0], 
                 this.row * this.frameSize + greenDuckPos[1], 
@@ -75,7 +73,29 @@ export default class Duck extends MovingObject {
                 this.imgSize);
         }
     }
+
+    spazz(ctx, sprite, pos) {
+        console.log("spazzing");
+        ctx.drawImage(sprite,
+            0 * this.frameSize + greenDuckPos[0], 
+            3 * this.frameSize + greenDuckPos[1],
+            this.frameSize, this.frameSize,
+            pos[0], pos[1],
+            this.imgSize, this.imgSize);
+    }
+    
+    fall(ctx, sprite, pos) {
+        console.log("falling");
+        this.move();
+        ctx.drawImage(sprite,
+            1 * this.frameSize + greenDuckPos[0], 
+            3 * this.frameSize + greenDuckPos[1],
+            this.frameSize, this.frameSize,
+            pos[0], pos[1],
+            this.imgSize, this.imgSize);
+    }
 }
+
 
 //set bird sprite, in constructor?
 // if abs(vel[1]) > 7
@@ -95,6 +115,7 @@ const UP = 2
 const greenDuckPos = [127, 115];    // Green Duck - Slow
 const blueDuckPos = [0, 115];       // Blue Duck - Medium
 const redDuckPos = [256, 115];      // Red Duck - Fast
+// const spazzPos = [duckType, 235];
 
 // Animation Notes
 // this.ctx.drawImage(                          Parameter Type:

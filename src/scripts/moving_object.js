@@ -10,6 +10,18 @@ export default class MovingObject {
         this.frameRate = obj.frameRate;
     }
 
+    draw(ctx, sprite, spritePos) {
+        ctx.drawImage(sprite, 
+            this.col * this.frameSize + spritePos[0], 
+            this.row * this.frameSize + spritePos[1], 
+            this.frameSize, 
+            this.frameSize, 
+            this.pos[0], 
+            this.pos[1], 
+            this.imgSize, 
+            this.imgSize);
+    }
+
     move(time) {
         this.pos[0] += this.vel[0] * time;
         this.pos[1] += this.vel[1] * time;

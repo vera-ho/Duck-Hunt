@@ -122,6 +122,10 @@ h1 {
   padding-bottom: 10px;
 }
 
+#play-button, #restart-button {
+  cursor: pointer;
+}
+
 #footnotes {
   font-size: 16px;
   font-family: pretendo, "Courier New", Courier, monospace;

@@ -18,20 +18,48 @@ document.addEventListener("DOMContentLoaded", () => {
     background.setColor("skyblue");
     foreground.setImage(foregroundPath);
     
-    // Duck Testing - Animation with Sprite
     let game = new Game(gameboard, foreground);
-    setTimeout(()=> {       // Future: use start on click listener
-        game.start();
-    }, 10);  // make sure sprite is loaded before starting game
 
-    foreground.canvas.addEventListener("click", (e) => {
-        huntEventListener(e, foreground, game);
-    })
+    playButtonListener(foreground, game);
+    restartButtonListener(foreground, gameboard, game);
 })
 
+// Controls Listeners
+function playButtonListener(foreground, game) {
+    let playButton = document.getElementById("play-button");
+    playButton.addEventListener("click", () => {
+        game.start();
+        huntEventListener(foreground, game);
+    })
+}
+
+function huntEventListener(foreground, game) {
+    foreground.canvas.addEventListener("click", (e) => {
+        huntEvent(e, foreground, game);
+    })
+}
+
+function restartButtonListener(foreground, gameboard, game) {
+    let restartButton = document.getElementById("restart-button");
+
+    restartButton.addEventListener("click", (e) => {
+        restart(foreground, gameboard, game);
+    })
+}
+
+function restart(foreground, gameboard, game) {
+    game.duckArray = [];
+    game = null;
+    alert("restart!");
+
+    game = new Game(gameboard, foreground);
+    playButtonListener(foreground, game);
+    huntEventListener(foreground, game);
+}
+
 // Player clicked on canvas to hunt
-function huntEventListener(e, foreground, game) {
-    // get mouse click position
+function huntEvent(e, foreground, game) {
+    // Get click position
     let bound = foreground.canvas.getBoundingClientRect();
     let hit_x = e.clientX - bound.left;
     let hit_y = e.clientY - bound.top;

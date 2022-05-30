@@ -42,6 +42,12 @@ h1 {
     top: -3%;
 }
 
+// Info
+#game-info {
+    font-family: $main-font, 'Courier New', Courier, monospace;
+    border: dashed $main-color 3px;
+}
+
 // Buttons
 #control-container {
     font-family: $main-font, 'Courier New', Courier, monospace;

@@ -7,7 +7,7 @@ const spritePath = "./assets/duckhunt_various_sheet.png";
 export default class Game {
 
     constructor(gameboard) {
-        this.NUM_DUCKS = 2;
+        this.NUM_DUCKS = 10;
         this.gameboard = gameboard;
         this.ctx = gameboard.ctx;
         this.round = 1;
@@ -44,46 +44,44 @@ export default class Game {
     }
 
     gameLoop(timestamp) {
-        // let timePassed = (timestamp - this.prevTime) / 1000;
-        // this.prevTime = timestamp;
+        let timeElapsed = (timestamp - this.prevTime);
+        this.prevTime = timestamp;
 
-        // if(timePassed > 75) {
-        this.gameboard.clear();
-        for(let i = 0; i < this.duckArray.length; i++) {
-            let duck = this.duckArray[i];
-        // this.duckArray.forEach( (duck) => {
-            // duck.move(timePassed);
-            duck.move();
-            if(duck.flying) {
-                duck.draw(this.ctx, this.sprite, duck.pos);
-            } else {
-                // if (duration < 1500 ms)
-                // duck.spazz(this.ctx, this.sprite, duck.pos);
+        if(timeElapsed > 16) {
+            this.gameboard.clear();
+            for(let i = 0; i < this.duckArray.length; i++) {
+                let duck = this.duckArray[i];
 
-                // else if duration > 1500ms
-                if(duck.vel[0] === 0 && duck.vel[1] === 0) duck.vel = [0, 1];
-                duck.fall(this.ctx, this.sprite, duck.pos);
+                duck.move();
+                if(duck.flying) {
+                    duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed);
+                } else {
+                    duck.timeElapsed += timeElapsed;
+                    if (duck.timeElapsed < 275) {
+                        duck.spazz(this.ctx, this.sprite, duck.pos);
+                    } else {
+                        if(duck.vel[0] === 0 && duck.vel[1] === 0) duck.vel = [0, 3];
+                        duck.fall(this.ctx, this.sprite, duck.pos);
+                    }
+                }
 
-            }
-
-            if(duck.pos[1] >= DIMY) {
-                this.duckArray = this.duckArray.filter( (ele, idx) => { 
-                    return i !== idx;
-                })
-                break;
+                if(duck.pos[1] >= DIMY) {
+                    this.duckArray = this.duckArray.filter( (ele, idx) => { 
+                        return i !== idx;
+                    })
+                    break;
+                }
             }
         }
-        // ) forEach
 
         if(this.duckArray.length && this.animating) {
             window.requestAnimationFrame(this.gameLoop.bind(this));
         }
-        // }
     }
 
     // onclick
     restartGame() {
-        
+
     }
 
     // onclick

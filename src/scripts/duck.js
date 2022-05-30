@@ -7,13 +7,14 @@ export default class Duck extends MovingObject {
         if(!obj.row) obj.row = 0;
         super(obj);
         this.type = obj.type;       // bird color
-        this.imgSize = 65;          // sprite
-        this.frameSize = 40;        // rendered on canvas
+        this.imgSize = 65;          // rendered on canvas
+        this.frameSize = 40;        // sprite
         this.maxFrame = 3;
         this.pos = this.randomPosition();
         this.col = 0;
         this.row = 0;
         this.flying = true;
+        this.timeElapsed = 0;
         // this.vel = this.randomVelocity(10);
     }
 
@@ -42,10 +43,14 @@ export default class Duck extends MovingObject {
         }
     }
 
-    draw(ctx, sprite, pos) {
+    draw(ctx, sprite, pos, time) {
         // Flap the duck - need to slow it down - frame rate issue
-        // this.col++;
-        // this.col = this.col % this.maxFrame;
+        this.timeElapsed += time;
+        if(this.timeElapsed > 90) {
+            this.timeElapsed = 0;
+            this.col++;
+            this.col = this.col % this.maxFrame;
+        }
 
         this.move();
         if(this.vel[0] < 0) {

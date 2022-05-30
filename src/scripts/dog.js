@@ -1,6 +1,9 @@
-export default class Dog {
-    constructor() {
+import MovingObject from "./moving_object";
 
+export default class Dog {
+    constructor(obj) {
+        obj.imgSize = 60;
+        super(obj);
     }
 
     // beginning of every round

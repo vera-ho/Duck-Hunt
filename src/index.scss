@@ -1,14 +1,19 @@
 @import "./styles/reset";
 @import "./styles/canvas";
 @import "./styles/navigation";
-@import "./styles/controls";
 
 @font-face {
     font-family: duckhunt;
     src: url(../assets/font/m29.TTF);
 }
 
-$main-font: duckhunt;
+@font-face {
+    font-family: pretendo;
+    src: url(../assets/font/dpcomic.ttf);
+}
+
+$main-font: pretendo;
+$game-font: duckhunt;
 
 // Body wide
 body {
@@ -23,24 +28,36 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
-    height: 700px;
+    height: 600px;
 }
 
 // Header
 h1 {
     font-size: 45px;
-    font-family: $main-font, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: $game-font, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     position:absolute;
     left: 0px;
-    top: 5%;
+    top: -3%;
+}
+
+// Buttons
+#control-container {
+    font-family: $main-font, 'Courier New', Courier, monospace;
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    top: -2%;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 // Footer
 #footnotes {
-    font-size: small;
-    font-family:'Courier New', Courier, monospace;
-    text-align: center;
-    position: fixed;
-    bottom: 0px;
-    // left: 50%;
+    font-size: 16px;
+    font-family: $main-font, 'Courier New', Courier, monospace;
+    position: absolute;
+    bottom: -1%;
+    right: 0;
+    text-align: right;
 }
+

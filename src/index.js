@@ -19,12 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
     foreground.setImage(foregroundPath);
     
     let game = new Game(gameboard, foreground);
-
     playButtonListener(foreground, game);
     restartButtonListener(foreground, gameboard, game);
 })
 
-// Controls Listeners
+// Listeners
 function playButtonListener(foreground, game) {
     let playButton = document.getElementById("play-button");
     playButton.addEventListener("click", () => {
@@ -34,7 +33,7 @@ function playButtonListener(foreground, game) {
 }
 
 function huntEventListener(foreground, game) {
-    foreground.canvas.addEventListener("click", function foo(e) {
+    foreground.canvas.addEventListener("click", (e) => {
         huntEvent(e, foreground, game);
     })
 }
@@ -48,7 +47,7 @@ function restartButtonListener(foreground, gameboard, game) {
 }
 
 function restart(foreground, gameboard, game) {
-    foreground.canvas.removeEventListener("click", function foo(e) {
+    foreground.canvas.removeEventListener("click", (e) => {
         huntEvent(e, foreground, game);
     })
     game.duckArray = [];

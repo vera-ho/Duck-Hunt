@@ -82,6 +82,10 @@ i {
   padding: 5px;
 }
 
+.hidden {
+  display: none;
+}
+
 @font-face {
   font-family: duckhunt;
   src: url(../assets/font/m29.TTF);
@@ -124,6 +128,22 @@ h1 {
 
 #play-button, #restart-button {
   cursor: pointer;
+}
+
+#counter-container {
+  position: inherit;
+  bottom: 45px;
+  left: 10px;
+  background-color: black;
+  border: dashed lightseagreen 3px;
+}
+
+#score-counter,
+#ammo-counter,
+#time-counter {
+  font-family: duckhunt, "Courier New", Courier, monospace;
+  font-size: 20px;
+  padding: 5px;
 }
 
 #footnotes {

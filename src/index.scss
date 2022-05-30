@@ -15,10 +15,12 @@
 $main-font: pretendo;
 $game-font: duckhunt;
 
+$main-color: lightseagreen;
+
 // Body wide
 body {
     background-color: #2b3b48;
-    color: lightseagreen
+    color: $main-color;
 }
 
 // Main Section
@@ -53,6 +55,23 @@ h1 {
 
 #play-button, #restart-button {
     cursor: pointer;
+}
+
+// Counters
+#counter-container {
+    position: inherit;
+    bottom: 45px;
+    left: 10px;
+    background-color: black;
+    border: dashed $main-color 3px;
+}
+
+#score-counter, 
+#ammo-counter, 
+#time-counter {
+    font-family: $game-font, 'Courier New', Courier, monospace;
+    font-size: 20px;
+    padding: 5px;
 }
 
 // Footer

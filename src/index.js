@@ -30,11 +30,11 @@ function playButtonListener(foreground, game) {
     playButton.addEventListener("click", () => {
         game.start();
         huntEventListener(foreground, game);
-    })
+    }, { once: true });
 }
 
 function huntEventListener(foreground, game) {
-    foreground.canvas.addEventListener("click", (e) => {
+    foreground.canvas.addEventListener("click", function foo(e) {
         huntEvent(e, foreground, game);
     })
 }
@@ -48,13 +48,17 @@ function restartButtonListener(foreground, gameboard, game) {
 }
 
 function restart(foreground, gameboard, game) {
+    foreground.canvas.removeEventListener("click", function foo(e) {
+        huntEvent(e, foreground, game);
+    })
     game.duckArray = [];
     game = null;
+
     alert("restart!");
 
     game = new Game(gameboard, foreground);
     playButtonListener(foreground, game);
-    huntEventListener(foreground, game);
+    // huntEventListener(foreground, game);
 }
 
 // Player clicked on canvas to hunt

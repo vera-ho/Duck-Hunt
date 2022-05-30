@@ -75,8 +75,8 @@ Make it pretty, make it glow.
 The live project:
 - [X] Link to portfolio website, Github account, LinkedIn account
 - [ ] Landing page/modal with clear instructions
-- [ ] Interactive
-- [ ] Styled, clean frontend
+- [X] Interactive
+- [X] Styled, clean frontend
 - [ ] Ability to mute any sound effects
 
 Production README:

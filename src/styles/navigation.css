@@ -29,11 +29,6 @@ i {
     z-index: 10;
 }
 
-.hidden:hover {
+i:hover + .hidden {
     display: flex;
-    /* width: 300px;
-    position:absolute;
-    top: 55px;
-    right: 3px;
-    z-index: 10; */
 }

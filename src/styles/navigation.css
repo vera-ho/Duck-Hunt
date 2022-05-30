@@ -15,6 +15,7 @@ a {
 i {
     margin: 3px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .hidden {

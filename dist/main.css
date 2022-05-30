@@ -80,6 +80,7 @@ a {
 i {
   margin: 3px;
   padding: 5px;
+  cursor: pointer;
 }
 
 .hidden {
@@ -126,6 +127,7 @@ h1 {
   position: absolute;
   left: 0px;
   top: -3%;
+  cursor: default;
 }
 
 #game-info {

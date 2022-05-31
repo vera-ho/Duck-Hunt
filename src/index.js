@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     foreground.setImage(foregroundPath);
     
     let game = new Game(gameboard, foreground);
+    // playButtonListener(foreground, game);       // remove when splash is in place
     restartButtonListener(foreground, gameboard, game);
 })
 
@@ -41,6 +42,7 @@ function playButtonListener(foreground, game) {
     let playButton = document.getElementById("play-button");
     playButton.addEventListener("click", () => {
         game.start();
+        playButton.style.display = "none";
         huntEventListener(foreground, game);
     }, { once: true });
 }
@@ -56,6 +58,8 @@ function restartButtonListener(foreground, gameboard, game) {
 
     restartButton.addEventListener("click", (e) => {
         restart(foreground, gameboard, game);
+        let playButton = document.getElementById("play-button");
+        playButton.style.display = "block";
     })
 }
 
@@ -63,14 +67,10 @@ function restart(foreground, gameboard, game) {
     foreground.canvas.removeEventListener("click", (e) => {  // not working
         huntEvent(e, foreground, game);
     })
-    // game.duckArray = [];
-    // game = null;
-
-    alert("restart!");
+    gameboard.clear();
+    game.counterEl.style.zIndex = "0";
     game.restart;
-
     game = new Game(gameboard, foreground);
-    // debugger
     playButtonListener(foreground, game);
     // huntEventListener(foreground, game);
 }

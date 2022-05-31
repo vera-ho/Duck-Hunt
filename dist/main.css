@@ -133,7 +133,7 @@ body {
   height: 600px;
   background-image: url("../assets/duckhunt_02.jpeg");
   background-size: cover;
-  z-index: 5;
+  z-index: 6;
 }
 
 #main-container {
@@ -160,22 +160,31 @@ h1 {
 }
 
 #control-container {
-  font-family: dpcomic, "Courier New", Courier, monospace;
+  font-family: duckhunt, "Courier New", Courier, monospace;
   font-size: 20px;
-  position: absolute;
-  left: 49%;
-  top: -2%;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  cursor: pointer;
 }
 
 #play-button {
-  position: relative;
+  position: absolute;
+  top: 290px;
+  left: 400px;
+  width: 90px;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  font-family: duckhunt, "Courier New", Courier, monospace;
+  text-align: center;
+  background-color: #2b3b48;
+  padding: 10px;
+  border: dashed lightseagreen 2px;
 }
 
 #restart-button {
-  cursor: pointer;
-  padding-top: 2px;
+  position: absolute;
+  top: 17px;
+  left: 450px;
+  font-size: medium;
+  transform: translate(-50%, -50%);
 }
 
 #counter-container {

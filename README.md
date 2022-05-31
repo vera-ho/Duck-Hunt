@@ -21,7 +21,8 @@ In addition, this project will include:
 # Technologies, Libraries, APIs
 * Canvas API
 * Animations
-* Javascript, HTML
+* Javascript
+* HTML5 with CSS3
 
 # Timeline
 ## Day 0: Planning and Research
@@ -33,7 +34,7 @@ Continue any remaining research from Day 0 and begin the project setup.
 - [X] Complete skeleton setup
 - [X] Animating with sprite sheets
 - [X] Adding sound
-- [X] ~~Collision detection on click event~~ Duck elements will have click event listener
+- [X] Collision detection on click event
 
 ## Day 2: Set Up Classes and Properties
 Create classes for the UI, the Dog, bird objects, the timer, the life count and the score.

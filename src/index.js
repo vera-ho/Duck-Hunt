@@ -98,7 +98,9 @@ function huntEvent(e, foreground, game) {
     let hit_x = e.clientX - bound.left;
     let hit_y = e.clientY - bound.top;
 
-    game.duckArray.forEach( (duck) => {
+    for(let i = 0; i < game.duckArray.length; i++) {
+        let duck = game.duckArray[i];
+
         // Set hit box
         let xUpBound = duck.pos[0] + duck.imgSize;
         let yUpBound = duck.pos[1] + duck.imgSize;
@@ -115,12 +117,13 @@ function huntEvent(e, foreground, game) {
         if(hit_x < xUpBound && hit_x > xLowBound && 
            hit_y < yUpBound && hit_y > yLowBound) {
 
-            // stop flying animation
+            // Stop flying animation
             console.log("Hit!")
             duck.vel = [0, 0];
             duck.flying = false;
             game.score++; 
             game.hit = true;
+            break;
 
         } else { // failed hunt
             // decrease shot counter
@@ -129,7 +132,7 @@ function huntEvent(e, foreground, game) {
             // animate laughing dog
 
         }
-    })
+    }
 
     if(!game.hit && game.ammo > 0 && game.animating) {
         console.log("Miss! Haha.")

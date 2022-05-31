@@ -38,6 +38,22 @@ body {
     z-index: 6;
 }
 
+#lets-hunt {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    font-family: $game-font, 'Courier New', Courier, monospace;
+    font-size: 25px;
+    text-align: center;
+
+    background-color: black;
+    padding: 10px;
+    border: dashed $main-color 2px;
+    z-index: 6;
+}
+
 // Main Section
 #main-container {
     position: absolute;

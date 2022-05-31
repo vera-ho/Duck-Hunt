@@ -1,10 +1,7 @@
 import Canvas from "./scripts/canvas";
 import Game from "./scripts/game";
-// import Duck from "./scripts/duck";
 
-// Load assets to environment
 const foregroundPath = "./assets/duckhunt_transparent_nicepng.png";
-// const spritePath = "./assets/duckhunt_various_sheet.png";
 
 export const DIMX = 800;
 export const DIMY = 528;
@@ -15,7 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameboard = new Canvas("canvas-gameboard", DIMX, DIMY);
     const foreground = new Canvas("canvas-foreground", DIMX, DIMY);
 
-    const splashEl = document.getElementById("splash-container");
+    background.setColor("skyblue");
+    foreground.setImage(foregroundPath);
+    let game = new Game(gameboard, foreground);
+    splashImage(foreground, game);
+    restartButtonListener(foreground, gameboard, game);
+})
+
+//********************   Listeners   ********************//
+function splashImage(foreground, game) {
+    let splashEl = document.getElementById("splash-container");
     document.addEventListener("click", () => {
         let fadeSplash = setInterval(() => {
             if(!splashEl.style.opacity) splashEl.style.opacity = 1;
@@ -28,16 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }, 100)
     }, { once: true })
+}
 
-    background.setColor("skyblue");
-    foreground.setImage(foregroundPath);
-    
-    let game = new Game(gameboard, foreground);
-    // playButtonListener(foreground, game);       // remove when splash is in place
-    restartButtonListener(foreground, gameboard, game);
-})
-
-//********************   Listeners   ********************//
 function playButtonListener(foreground, game) {
     let playButton = document.getElementById("play-button");
     playButton.addEventListener("click", () => {

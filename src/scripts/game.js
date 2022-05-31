@@ -1,6 +1,6 @@
 import Duck from "./duck";
 import Dog from "./dog";
-import { DIMX, DIMY } from "../index";
+import { DIMY } from "../index";
 
 const spritePath = "./assets/duckhunt_various_sheet.png";
 
@@ -32,7 +32,7 @@ export default class Game {
         this.sprite = new Image();
         this.sprite.src = spritePath;
 
-        // Duck instances
+        // Create ducks
         this.duckArray = [];
         for(let i = 0; i < this.NUM_DUCKS; i++) {
             let vx = Math.random() * 3 + 1;
@@ -44,7 +44,7 @@ export default class Game {
             this.duckArray.push(duck);
         }
 
-        // Dog instance
+        // Create dog
         this.dog = new Dog({
             // pos: [0, 400],
             vel: [1, 0],
@@ -73,49 +73,58 @@ export default class Game {
 
         if(timeElapsed > 16) {
             this.gameboard.clear();
-
-            for(let i = 0; i < this.duckArray.length; i++) {
-                if(i > 1) break;    // spawn max 2 birds at a time
-                if(this.roundTime < 0) this.timerEl = 0;
-
-                let duck = this.duckArray[i];
-
-                duck.move();
-                if(duck.flying) {
-                    if(duck.vel[0] < 0) {
-                        duck.draw(this.ctx, this.sprite, [-duck.pos[0], duck.pos[1]], timeElapsed);
-                    } else {
-                        duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed);
-                    }
-                } else {
-                    duck.timeElapsed += timeElapsed;
-                    if (duck.timeElapsed < 275) {
-                        duck.spazz(this.ctx, this.sprite, duck.pos);
-                    } else {
-                        if(duck.vel[0] === 0 && duck.vel[1] === 0) duck.vel = [0, 5];
-                        duck.fall(this.ctx, this.sprite, duck.pos);
-                    }
-                }
-
-                if(duck.pos[1] >= DIMY) {
-                    this.duckArray = this.duckArray.filter( (ele, idx) => { 
-                        return i !== idx;
-                    })
-                    break;
-                }
-            }
+            this.animateDuck(timeElapsed);
 
             // Game over conditions
             if(this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) {
                 this.stopGame();
-            } 
+            }
         }
-
-
 
         if(this.duckArray.length && this.animating) {
             window.requestAnimationFrame(this.gameLoop.bind(this));
         }
+    }
+
+    animateDuck(timeElapsed) {
+        for(let i = 0; i < this.duckArray.length; i++) {
+            if(i > 1) break;    // spawn max 2 birds at a time
+            if(this.roundTime < 0) this.timerEl = 0;
+
+            let duck = this.duckArray[i];
+
+            duck.move();
+            if(duck.flying) {
+                if(duck.vel[0] < 0) {
+                    duck.draw(this.ctx, this.sprite, [-duck.pos[0], duck.pos[1]], timeElapsed);
+                } else {
+                    duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed);
+                }
+            } else {
+                duck.timeElapsed += timeElapsed;
+                if (duck.timeElapsed < 275) {
+                    duck.spazz(this.ctx, this.sprite, duck.pos);
+                } else {
+                    if(duck.vel[0] === 0 && duck.vel[1] === 0) duck.vel = [0, 5];
+                    duck.fall(this.ctx, this.sprite, duck.pos);
+                }
+            }
+
+            if(duck.pos[1] >= DIMY) {
+                this.duckArray = this.duckArray.filter( (ele, idx) => { 
+                    return i !== idx;
+                })
+                break;
+            }
+        }
+    }
+
+    updateCounters() {
+        this.roundTime = 16000 - this.timer;
+        this.scoreEl.innerHTML = `Score &nbsp;${this.score * 1000}`;
+        this.ammoEl.innerHTML =  `Ammo &nbsp;${this.ammo}`;
+        this.timerEl.innerHTML = `Time &nbsp;&nbsp;${Math.round(this.roundTime/1000)}`;
+        this.hit = false;
     }
 
     restart() {
@@ -136,19 +145,9 @@ export default class Game {
         this.prevTime = performance.now();
         this.animating = true;
         window.requestAnimationFrame(this.gameLoop.bind(this));
-        // this.prevTime = performance.now();
     }
 
-    // win or lose condition triggered
     stopGame() {
         this.animating = false;
-    }
-
-    updateCounters() {
-        this.roundTime = 16000 - this.timer;
-        this.scoreEl.innerHTML = `Score &nbsp;${this.score * 1000}`;
-        this.ammoEl.innerHTML =  `Ammo &nbsp;${this.ammo}`;
-        this.timerEl.innerHTML = `Time &nbsp;&nbsp;${Math.round(this.roundTime/1000)}`;
-        this.hit = false;
     }
 }

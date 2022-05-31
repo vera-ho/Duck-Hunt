@@ -59,9 +59,7 @@ export default class Duck extends MovingObject {
     }
 
     draw(ctx, sprite, pos, time) {
-        // Flap the duck 
         this.flap(time);
-
         ctx.save();
         if(this.vel[0] < 0) ctx.scale(-1, 1);
         ctx.drawImage(sprite, 

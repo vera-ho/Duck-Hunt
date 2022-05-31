@@ -39,15 +39,15 @@ Continue any remaining research from Day 0 and begin the project setup.
 Create classes for the UI, the Dog, bird objects, the timer, the life count and the score.
 - [X] Render canvas and background
 - [X] Render navigation bar and control buttons
-- [x] Render the duck objects (w/o event handling)
-- [x] Render dog object (w/o event handling)
+- [X] Render the duck objects (w/o event handling)
+- [ ] Render dog object (w/o event handling)
 - [X] Render the timer, life count and score count
     - Graphics only, not operational at this time
 
 ## Day 3 - 5: All Game Logic
 Work on all the game logic.
 - [X] Bird movement logic
-- [ ] Event handling logic
+- [X] Event handling logic
 - [X] Game play logic
     - Points for successful hunt
     - Game over logic

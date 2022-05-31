@@ -124,6 +124,7 @@ body {
   background-image: url("../assets/nes_space.jpeg");
   background-repeat: repeat;
   color: lightseagreen;
+  cursor: default;
 }
 
 #splash-container {
@@ -165,7 +166,6 @@ h1 {
   position: absolute;
   left: 1px;
   top: -3%;
-  cursor: default;
 }
 
 #game-info {
@@ -216,7 +216,6 @@ h1 {
   font-family: duckhunt, "Courier New", Courier, monospace;
   font-size: 20px;
   padding: 5px;
-  cursor: default;
 }
 
 #footnotes {

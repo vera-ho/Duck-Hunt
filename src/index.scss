@@ -25,6 +25,8 @@ body {
     background-image: url("../assets/nes_space.jpeg");
     background-repeat: repeat;
     color: $main-color;
+
+    cursor: default;
 }
 
 // Splash
@@ -71,7 +73,6 @@ h1 {
     position:absolute;
     left: 1px;
     top: -3%;
-    cursor: default;
 }
 
 // Info
@@ -85,11 +86,6 @@ h1 {
     font-family: $game-font, 'Courier New', Courier, monospace;
     font-size: 20px;
     cursor: pointer;
-    // position: absolute;
-    // left: 49%;
-    // top: -2%;
-    // margin-bottom: 10px;
-    // padding-bottom: 10px;
 }
 
 #play-button {
@@ -131,7 +127,6 @@ h1 {
     font-family: $game-font, 'Courier New', Courier, monospace;
     font-size: 20px;
     padding: 5px;
-    cursor: default;
 }
 
 // Footer

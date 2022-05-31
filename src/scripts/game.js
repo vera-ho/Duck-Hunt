@@ -14,8 +14,14 @@ export default class Game {
         this.round = 1;
         this.prevTime = 0;
         this.animating = true;
+
+        // counters
         this.score = 0;
-        this.ammo = 3;
+        this.ammo = 10;
+        this.roundTime = 15;
+        this.scoreEl = document.getElementById("score-counter");
+        this.ammoEl = document.getElementById("ammo-counter");
+        this.timerEl = document.getElementById("time-counter");
 
         // Load sprite
         this.sprite = new Image();
@@ -59,6 +65,8 @@ export default class Game {
     gameLoop(timestamp) {
         let timeElapsed = (timestamp - this.prevTime);
         this.prevTime = timestamp;
+
+        this.updateCounters();
 
         if(timeElapsed > 16) {
             this.gameboard.clear();
@@ -108,5 +116,11 @@ export default class Game {
     // win or lose condition triggered
     stopGame() {
         this.animating = false;
+    }
+
+    updateCounters() {
+        this.scoreEl.innerHTML = `Score &nbsp;${this.score * 1000}`;
+        this.ammoEl.innerHTML =  `Ammo &nbsp;${this.ammo}`;
+        this.timerEl.innerHTML = `Time &nbsp;&nbsp;${this.roundTime}`;
     }
 }

@@ -89,14 +89,11 @@ function huntEvent(e, foreground, game) {
             console.log("Hit!")
             duck.vel = [0, 0];
             duck.flying = false;
-
-            // update game
-            game.score++;
+            game.score++; 
 
         } else { // failed hunt
             // decrease shot counter
             console.log("Miss! Haha.")
-            // game.ammo--;
 
             // animate laughing dog
 

@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
     restartButtonListener(foreground, gameboard, game);
 })
 
-// Listeners
+
+//********************   Listeners   ********************//
 function playButtonListener(foreground, game) {
     let playButton = document.getElementById("play-button");
     playButton.addEventListener("click", () => {
@@ -67,15 +68,14 @@ function huntEvent(e, foreground, game) {
     let hit_x = e.clientX - bound.left;
     let hit_y = e.clientY - bound.top;
 
-    for(let i = 0; i < game.duckArray.length; i++) {  // change back to forEach?
-        let duck = game.duckArray[i];
-
+    game.duckArray.forEach( (duck) => {
         // Set hit box
         let xUpBound = duck.pos[0] + duck.imgSize;
         let yUpBound = duck.pos[1] + duck.imgSize;
         let xLowBound = duck.pos[0];
         let yLowBound = duck.pos[1];
 
+        // Adjust for reversed image (duck flying left)
         if(duck.vel[0] < 0) {
             xUpBound = duck.pos[0];
             xLowBound = duck.pos[0] - duck.imgSize;
@@ -98,6 +98,6 @@ function huntEvent(e, foreground, game) {
             // animate laughing dog
 
         }
-    }
+    })
 }
 

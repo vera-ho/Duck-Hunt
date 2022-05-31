@@ -19,6 +19,7 @@ export default class Game {
         this.score = 0;
         this.ammo = 10;
         this.roundTime = 15;
+        this.counterEl = document.getElementById("counter-container");
         this.scoreEl = document.getElementById("score-counter");
         this.ammoEl = document.getElementById("ammo-counter");
         this.timerEl = document.getElementById("time-counter");
@@ -59,6 +60,7 @@ export default class Game {
     }
 
     start() {
+        this.counterEl.style.zIndex = "10";
         window.requestAnimationFrame(this.gameLoop.bind(this));
     }
 

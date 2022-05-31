@@ -56,6 +56,7 @@ export default class Duck extends MovingObject {
             this.timeElapsed = 0;
             this.spriteCol++;
             this.spriteCol = this.spriteCol % this.maxFrame;
+            if(this.spriteCol > this.maxFrame) this.spriteCol = 0;
         }
 
         // Refactor

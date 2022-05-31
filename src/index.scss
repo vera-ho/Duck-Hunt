@@ -2,22 +2,24 @@
 @import "./styles/canvas";
 @import "./styles/navigation";
 
+
+// Fonts
 @font-face {
     font-family: duckhunt;
     src: url(../assets/font/m29.TTF);
 }
 
 @font-face {
-    font-family: pretendo;
+    font-family: dpcomic;
     src: url(../assets/font/dpcomic.ttf);
 }
 
-$main-font: pretendo;
+$main-font: dpcomic;
 $game-font: duckhunt;
 
+// Colors
 $main-color: lightseagreen;
 
-// Body wide
 body {
     background-color: #2b3b48;
     background-image: url("../assets/nes_space.jpeg");
@@ -73,6 +75,7 @@ h1 {
     left: 10px;
     background-color: black;
     border: dashed $main-color 3px;
+    z-index: 0;
 }
 
 #score-counter, 

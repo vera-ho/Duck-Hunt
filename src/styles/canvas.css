@@ -5,3 +5,15 @@ canvas {
     transform: translate(-50%, -50%);
     border: 2px solid black;
 }
+
+#canvas-background {
+    z-index: 2;
+}
+
+#canvas-gameboard {
+    z-index: 3;
+}
+
+#canvas-foreground {
+    z-index: 4;
+}

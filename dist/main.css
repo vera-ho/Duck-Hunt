@@ -63,6 +63,18 @@ canvas {
   border: 2px solid black;
 }
 
+#canvas-background {
+  z-index: 2;
+}
+
+#canvas-gameboard {
+  z-index: 3;
+}
+
+#canvas-foreground {
+  z-index: 4;
+}
+
 #navigation-bar {
   position: absolute;
   top: -3%;
@@ -92,7 +104,7 @@ i {
   position: absolute;
   top: 55px;
   right: 3px;
-  z-index: 10;
+  z-index: 5;
 }
 
 i:hover + .hidden {
@@ -104,11 +116,11 @@ i:hover + .hidden {
   src: url(../assets/font/m29.TTF);
 }
 @font-face {
-  font-family: pretendo;
+  font-family: dpcomic;
   src: url(../assets/font/dpcomic.ttf);
 }
 body {
-  background-color: #464646;
+  background-color: #2b3b48;
   background-image: url("../assets/nes_space.jpeg");
   background-repeat: repeat;
   color: lightseagreen;
@@ -133,12 +145,12 @@ h1 {
 }
 
 #game-info {
-  font-family: pretendo, "Courier New", Courier, monospace;
+  font-family: dpcomic, "Courier New", Courier, monospace;
   border: dashed lightseagreen 3px;
 }
 
 #control-container {
-  font-family: pretendo, "Courier New", Courier, monospace;
+  font-family: dpcomic, "Courier New", Courier, monospace;
   font-size: 20px;
   position: absolute;
   left: 50%;
@@ -157,6 +169,7 @@ h1 {
   left: 10px;
   background-color: black;
   border: dashed lightseagreen 3px;
+  z-index: 0;
 }
 
 #score-counter,
@@ -170,7 +183,7 @@ h1 {
 
 #footnotes {
   font-size: 16px;
-  font-family: pretendo, "Courier New", Courier, monospace;
+  font-family: dpcomic, "Courier New", Courier, monospace;
   position: absolute;
   bottom: -1%;
   right: 0;

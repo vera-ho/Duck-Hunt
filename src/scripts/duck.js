@@ -48,9 +48,7 @@ export default class Duck extends MovingObject {
         }
     }
 
-    draw(ctx, sprite, pos, time) {
-        // Flap the duck - need to slow it down - frame rate issue
-        // make flapDuck()
+    flap(time) {
         this.timeElapsed += time;
         if(this.timeElapsed > 90) {
             this.timeElapsed = 0;
@@ -58,23 +56,15 @@ export default class Duck extends MovingObject {
             this.spriteCol = this.spriteCol % this.maxFrame;
             if(this.spriteCol > this.maxFrame) this.spriteCol = 0;
         }
+    }
 
-        // Refactor
-        if(this.vel[0] < 0) {
-            ctx.save();
-            ctx.scale(-1, 1);
-            ctx.drawImage(sprite, 
-                this.spriteCol * this.frameSize + greenDuckPos[0], 
-                this.spriteRow * this.frameSize + greenDuckPos[1], 
-                this.frameSize, 
-                this.frameSize, 
-                -pos[0], 
-                pos[1], 
-                this.imgSize, 
-                this.imgSize);
-            ctx.restore();
-        } else { 
-            ctx.drawImage(sprite, 
+    draw(ctx, sprite, pos, time) {
+        // Flap the duck 
+        this.flap(time);
+
+        ctx.save();
+        if(this.vel[0] < 0) ctx.scale(-1, 1);
+        ctx.drawImage(sprite, 
                 this.spriteCol * this.frameSize + greenDuckPos[0], 
                 this.spriteRow * this.frameSize + greenDuckPos[1], 
                 this.frameSize, 
@@ -83,7 +73,7 @@ export default class Duck extends MovingObject {
                 pos[1], 
                 this.imgSize, 
                 this.imgSize);
-        }
+        ctx.restore();
     }
 
     spazz(ctx, sprite, pos) {

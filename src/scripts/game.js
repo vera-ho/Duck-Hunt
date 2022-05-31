@@ -75,14 +75,18 @@ export default class Game {
             this.gameboard.clear();
 
             for(let i = 0; i < this.duckArray.length; i++) {
-                if(i > 1) break;
+                if(i > 1) break;    // spawn max 2 birds at a time
+                if(this.roundTime < 0) this.timerEl = 0;
+
                 let duck = this.duckArray[i];
 
-                if(this.roundTime < 0) this.timerEl = 0;
-                // put in Duck#animate()
                 duck.move();
                 if(duck.flying) {
-                    duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed);
+                    if(duck.vel[0] < 0) {
+                        duck.draw(this.ctx, this.sprite, [-duck.pos[0], duck.pos[1]], timeElapsed);
+                    } else {
+                        duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed);
+                    }
                 } else {
                     duck.timeElapsed += timeElapsed;
                     if (duck.timeElapsed < 275) {
@@ -100,12 +104,14 @@ export default class Game {
                     break;
                 }
             }
+
+            // Game over conditions
+            if(this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) {
+                this.stopGame();
+            } 
         }
 
-        // Game over conditions
-        if(this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) {
-            this.stopGame();
-        } 
+
 
         if(this.duckArray.length && this.animating) {
             window.requestAnimationFrame(this.gameLoop.bind(this));
@@ -127,10 +133,10 @@ export default class Game {
     }
 
     resume() {
-        // this.prevTime = performance.now();
+        this.prevTime = performance.now();
         this.animating = true;
         window.requestAnimationFrame(this.gameLoop.bind(this));
-        this.prevTime = performance.now();
+        // this.prevTime = performance.now();
     }
 
     // win or lose condition triggered

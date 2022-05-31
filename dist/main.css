@@ -108,7 +108,9 @@ i:hover + .hidden {
   src: url(../assets/font/dpcomic.ttf);
 }
 body {
-  background-color: #2b3b48;
+  background-color: #464646;
+  background-image: url("../assets/nes_space.jpeg");
+  background-repeat: repeat;
   color: lightseagreen;
 }
 

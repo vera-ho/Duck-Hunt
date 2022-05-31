@@ -20,6 +20,8 @@ $main-color: lightseagreen;
 // Body wide
 body {
     background-color: #2b3b48;
+    background-image: url("../assets/nes_space.jpeg");
+    background-repeat: repeat;
     color: $main-color;
 }
 

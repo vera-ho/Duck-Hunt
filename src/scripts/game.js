@@ -41,7 +41,6 @@ export default class Game {
                 game: this,
                 vel: [vx, vy]
             });
-
             this.duckArray.push(duck);
         }
 
@@ -114,11 +113,9 @@ export default class Game {
         }
     }
 
-    // onclick
     restart() {
         this.duckArray = [];
         this.hit = false;
-        // this.prevTime = 0;
         this.animating = false;
         this.timer = 0;
         this.score = 0;
@@ -126,8 +123,7 @@ export default class Game {
         this.roundTime = 15;
     }
 
-    // onclick
-    pauseGame() {
+    pause() {
         this.animating = false;
     }
 

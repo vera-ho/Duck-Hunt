@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameboard = new Canvas("canvas-gameboard", DIMX, DIMY);
     const foreground = new Canvas("canvas-foreground", DIMX, DIMY);
 
+    const splashEl = document.getElementById("splash-container");
+    // debugger
+    document.addEventListener("click", (e) => {
+        // splashEl.style.zIndex = "-1";
+        splashEl.remove();
+    }, { once: true })
+
     background.setColor("skyblue");
     foreground.setImage(foregroundPath);
     

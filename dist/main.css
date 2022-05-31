@@ -126,6 +126,16 @@ body {
   color: lightseagreen;
 }
 
+#splash-container {
+  position: absolute;
+  top: -5.5%;
+  width: 800px;
+  height: 600px;
+  background-image: url("../assets/duckhunt_02.jpeg");
+  background-size: cover;
+  z-index: 5;
+}
+
 #main-container {
   position: absolute;
   top: 50%;
@@ -139,7 +149,7 @@ h1 {
   font-size: 45px;
   font-family: duckhunt, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   position: absolute;
-  left: 0px;
+  left: 1px;
   top: -3%;
   cursor: default;
 }
@@ -153,7 +163,7 @@ h1 {
   font-family: dpcomic, "Courier New", Courier, monospace;
   font-size: 20px;
   position: absolute;
-  left: 50%;
+  left: 49%;
   top: -2%;
   margin-bottom: 10px;
   padding-bottom: 10px;
@@ -161,6 +171,7 @@ h1 {
 
 #play-button, #restart-button {
   cursor: pointer;
+  padding-top: 2px;
 }
 
 #counter-container {

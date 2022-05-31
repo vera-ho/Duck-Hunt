@@ -1,6 +1,6 @@
 import Duck from "./duck";
 import Dog from "./dog";
-import { DIMY } from "../index";
+import { DIMX, DIMY } from "../index";
 
 const spritePath = "./assets/duckhunt_various_sheet.png";
 
@@ -31,6 +31,9 @@ export default class Game {
         // Load sprite
         this.sprite = new Image();
         this.sprite.src = spritePath;
+
+        this.fgimg = new Image();
+        this.fgimg.src = "./assets/duckhunt_transparent_nicepng.png";
 
         // Create ducks
         this.duckArray = [];
@@ -73,7 +76,9 @@ export default class Game {
 
         if(timeElapsed > 16) {
             this.gameboard.clear();
+
             this.animateDuck(timeElapsed);
+            this.animateDog(timeElapsed);
 
             // Game over conditions
             if(this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) {
@@ -117,6 +122,25 @@ export default class Game {
                 break;
             }
         }
+    }
+
+    animateDog(timeElapsed) {
+        // debugger
+        // draw dog 
+        this.dog.move();
+        this.foreground.clear();
+        // this.foreground.setImage("./assets/duckhunt_transparent_nicepng.png");
+        this.foreground.ctx.drawImage(this.fgimg, 0, 0, this.fgimg.width, this.fgimg.height, 0, 0, DIMX, DIMY);
+        this.foreground.ctx.drawImage(this.sprite, 
+            0, 
+            0, 
+            this.dog.frameSize, 
+            this.dog.frameSize,
+            this.dog.pos[0], 
+            this.dog.pos[1], 
+            this.dog.imgSize, 
+            this.dog.imgSize);
+
     }
 
     updateCounters() {

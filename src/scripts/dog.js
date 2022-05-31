@@ -24,19 +24,3 @@ export default class Dog extends MovingObject {
 
     }
 }
-
-
-    // // debugger
-    // // draw dog 
-    // this.dog.move();
-    // // this.foreground.clear();
-    // // this.foreground.setImage("./assets/duckhunt_transparent_nicepng.png");
-    // this.foreground.ctx.drawImage(this.sprite, 
-    //     0, 
-    //     0, 
-    //     this.dog.frameSize, 
-    //     this.dog.frameSize,
-    //     this.dog.pos[0], 
-    //     this.dog.pos[1], 
-    //     this.dog.imgSize, 
-    //     this.dog.imgSize);

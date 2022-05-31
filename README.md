@@ -48,7 +48,7 @@ Create classes for the UI, the Dog, bird objects, the timer, the life count and 
 Work on all the game logic.
 - [X] Bird movement logic
 - [ ] Event handling logic
-- [ ] Game play logic
+- [X] Game play logic
     - Points for successful hunt
     - Game over logic
         - Missed hunts

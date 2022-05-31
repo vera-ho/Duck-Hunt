@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     restartButtonListener(foreground, gameboard, game);
 })
 
-
 //********************   Listeners   ********************//
 function playButtonListener(foreground, game) {
     let playButton = document.getElementById("play-button");
@@ -48,21 +47,24 @@ function restartButtonListener(foreground, gameboard, game) {
 }
 
 function restart(foreground, gameboard, game) {
-    foreground.canvas.removeEventListener("click", (e) => {
+    foreground.canvas.removeEventListener("click", (e) => {  // not working
         huntEvent(e, foreground, game);
     })
-    game.duckArray = [];
-    game = null;
+    // game.duckArray = [];
+    // game = null;
 
     alert("restart!");
+    game.restart;
 
     game = new Game(gameboard, foreground);
+    // debugger
     playButtonListener(foreground, game);
     // huntEventListener(foreground, game);
 }
 
 // Player clicked on canvas to hunt
 function huntEvent(e, foreground, game) {
+
     // Get click position
     let bound = foreground.canvas.getBoundingClientRect();
     let hit_x = e.clientX - bound.left;
@@ -90,14 +92,19 @@ function huntEvent(e, foreground, game) {
             duck.vel = [0, 0];
             duck.flying = false;
             game.score++; 
+            game.hit = true;
 
         } else { // failed hunt
             // decrease shot counter
-            console.log("Miss! Haha.")
+            // console.log("Miss! Haha.")
 
             // animate laughing dog
 
         }
     })
-}
 
+    if(!game.hit && game.ammo > 0) {
+        console.log("Miss! Haha.")
+        game.ammo--;
+    } 
+}

@@ -75,7 +75,12 @@ h1 {
     padding-bottom: 10px;
 }
 
-#play-button, #restart-button {
+
+#play-button {
+    position: relative;
+}
+
+#restart-button {
     cursor: pointer;
     padding-top: 2px;
 }

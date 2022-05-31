@@ -16,17 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const foreground = new Canvas("canvas-foreground", DIMX, DIMY);
 
     const splashEl = document.getElementById("splash-container");
-    // debugger
-    document.addEventListener("click", (e) => {
-        // splashEl.style.zIndex = "-1";
-        splashEl.remove();
+    document.addEventListener("click", () => {
+        let fadeSplash = setInterval(() => {
+            if(!splashEl.style.opacity) splashEl.style.opacity = 1;
+            if(splashEl.style.opacity > 0) {
+                splashEl.style.opacity -= 0.1;
+            } else {
+                splashEl.remove();
+                clearInterval(fadeSplash);
+                playButtonListener(foreground, game);
+            }
+        }, 100)
     }, { once: true })
 
     background.setColor("skyblue");
     foreground.setImage(foregroundPath);
     
     let game = new Game(gameboard, foreground);
-    playButtonListener(foreground, game);
     restartButtonListener(foreground, gameboard, game);
 })
 

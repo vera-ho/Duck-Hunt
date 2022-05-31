@@ -25,7 +25,6 @@ body {
     background-image: url("../assets/nes_space.jpeg");
     background-repeat: repeat;
     color: $main-color;
-
     cursor: default;
 }
 
@@ -102,13 +101,19 @@ h1 {
     border: dashed $main-color 2px;
 }
 
+#pause-button {
+    position: absolute;
+    left: 400px;
+    top: -15px;
+    font-size: medium;
+    padding-bottom: 10px;
+}
+
 #restart-button {
     position: absolute;
-    top: 17px;
-    left: 450px;
+    top: 10px;
+    left: 400px;
     font-size: medium;
-    transform: translate(-50%, -50%);
-    // z-index: 4;
 }
 
 // Counters

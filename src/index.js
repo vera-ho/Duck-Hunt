@@ -44,12 +44,26 @@ function playButtonListener(foreground, game) {
         game.start();
         playButton.style.display = "none";
         huntEventListener(foreground, game);
+        pauseButtonListener(game);
     }, { once: true });
 }
 
 function huntEventListener(foreground, game) {
     foreground.canvas.addEventListener("click", (e) => {
-        huntEvent(e, foreground, game);
+        if(game.animating) huntEvent(e, foreground, game);
+    })
+}
+
+function pauseButtonListener(game) {
+    let pauseButton = document.getElementById("pause-button") 
+    pauseButton.addEventListener("click", () => {
+        if(pauseButton.innerHTML === "Pause" && game.animating) {
+            game.pause();
+            pauseButton.innerHTML = "Resume";
+        } else {
+            pauseButton.innerHTML = "Pause";
+            game.resume();
+        }
     })
 }
 
@@ -60,6 +74,7 @@ function restartButtonListener(foreground, gameboard, game) {
         restart(foreground, gameboard, game);
         let playButton = document.getElementById("play-button");
         playButton.style.display = "block";
+        // pauseButtonListener(game);
     })
 }
 
@@ -116,7 +131,7 @@ function huntEvent(e, foreground, game) {
         }
     })
 
-    if(!game.hit && game.ammo > 0) {
+    if(!game.hit && game.ammo > 0 && game.animating) {
         console.log("Miss! Haha.")
         game.ammo--;
     } 

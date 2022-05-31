@@ -61,7 +61,6 @@ export default class Game {
         this.counterEl.style.zIndex = "5";
         this.animating = true;
         this.prevTime = performance.now();
-        // debugger
         window.requestAnimationFrame(this.gameLoop.bind(this));
     }
 
@@ -127,10 +126,16 @@ export default class Game {
         this.animating = false;
     }
 
+    resume() {
+        // this.prevTime = performance.now();
+        this.animating = true;
+        window.requestAnimationFrame(this.gameLoop.bind(this));
+        this.prevTime = performance.now();
+    }
+
     // win or lose condition triggered
     stopGame() {
         this.animating = false;
-        // alert("Stopped");
     }
 
     updateCounters() {

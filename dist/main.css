@@ -193,12 +193,19 @@ h1 {
   border: dashed lightseagreen 2px;
 }
 
+#pause-button {
+  position: absolute;
+  left: 400px;
+  top: -15px;
+  font-size: medium;
+  padding-bottom: 10px;
+}
+
 #restart-button {
   position: absolute;
-  top: 17px;
-  left: 450px;
+  top: 10px;
+  left: 400px;
   font-size: medium;
-  transform: translate(-50%, -50%);
 }
 
 #counter-container {

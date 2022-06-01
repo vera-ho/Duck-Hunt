@@ -41,7 +41,7 @@ Create classes for the UI, the Dog, bird objects, the timer, the life count and 
 - [X] Render canvas and background
 - [X] Render navigation bar and control buttons
 - [X] Render the duck objects (w/o event handling)
-- [ ] Render dog object (w/o event handling)
+- [X] Render dog object (w/o event handling)
 - [X] Render the timer, life count and score count
     - Graphics only, not operational at this time
 
@@ -69,20 +69,20 @@ Make it pretty, make it glow.
 # Bonus Features
 - [ ] Crossover with other game characters
     - Lose points if they are hunted
-- [ ] Power-ups to regain lives
+- [ ] Power-ups to regain ammo/time
 - [ ] Add top 3 score board
 
 # Project Checklist
 The live project:
 - [X] Link to portfolio website, Github account, LinkedIn account
-- [ ] Landing page/modal with clear instructions
+- [X] Landing page/modal with clear instructions
 - [X] Interactive
 - [X] Styled, clean frontend
 - [ ] Ability to mute any sound effects
 
 Production README:
 - [ ] Link to live project 
-- [ ] Instructions to play or interact with the project
+- [X] Instructions to play or interact with the project
 - [X] List of technologies, libraries, APIs used
 - [ ] Technical implementation details with clean code snippets
 - [X] To-dos and future features

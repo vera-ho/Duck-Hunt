@@ -6,8 +6,8 @@ export default class MovingObject {
         this.imgSize = obj.imgSize;
         this.frameSize = obj.frameSize;
         this.maxFrame = obj.maxFrame;
-        this.row;
-        this.col;
+        this.spriteRow = obj.spriteRow;
+        this.spriteCol = obj.spriteCol;
     }
 
     draw(ctx, sprite, spritePos) {

@@ -12,8 +12,6 @@ export default class Duck extends MovingObject {
         this.frameSize = 40;        // sprite
         this.maxFrame = 3;
         this.pos = this.randomPosition();
-        this.spriteCol = obj.spriteCol;
-        this.spriteRow = obj.spriteRow;
 
         // unique to duck
         this.flying = true;

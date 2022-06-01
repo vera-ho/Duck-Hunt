@@ -48,7 +48,7 @@ function playButtonListener(foreground, game) {
 
 function huntEventListener(foreground, game) {
     foreground.canvas.addEventListener("click", (e) => {
-        if(game.animating) huntEvent(e, foreground, game);
+        if(game.animating && !game.dogIntro) huntEvent(e, foreground, game);
     })
 }
 

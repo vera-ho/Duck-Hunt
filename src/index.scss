@@ -122,7 +122,8 @@ h1 {
 //     top: -20px;
 // }
 
-#sound-effects i:first-child { 
+#sound-on {
+// #sound-effects i:first-child { 
     position:absolute;
     left: 65%;
     top: -20px;
@@ -130,7 +131,8 @@ h1 {
     // display: none;
 }
 
-#sound-effects i:last-child {
+#sound-off {
+// #sound-effects i:last-child {
     position:absolute;
     left: 65%;
     top: -20px;

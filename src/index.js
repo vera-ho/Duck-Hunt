@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Game
     let game = new Game(gameboard, foreground);
     splashImage(foreground, gameboard, game);
+    soundToggleListener(game);
 })
 
 //********************   Listeners   ********************//
@@ -63,7 +64,7 @@ function huntEventListener(foreground, game) {
             let sound = new GameAudio();
             sound.shoot.play();
         }
-        
+
         if(game.animating && !game.dogIntro) huntEvent(e, foreground, game);
     })
 }
@@ -152,4 +153,21 @@ function huntEvent(e, foreground, game) {
         console.log("Miss! Haha.")
         game.ammo--;
     } 
+}
+
+function soundToggleListener(game) {
+    let toggle = document.getElementById("sound-effects");
+    let soundOn = document.getElementById("sound-on");
+    let mute = document.getElementById("sound-off");
+    toggle.addEventListener("click", () => {
+        if(soundOn.style.display !== "none") {
+            soundOn.style.display = "none";
+            mute.style.display = "block";
+            game.soundOn = false;
+        } else {
+            soundOn.style.display = "block";
+            mute.style.display = "none";
+            game.soundOn = true;
+        }
+    })
 }

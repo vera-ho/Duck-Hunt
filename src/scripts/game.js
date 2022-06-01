@@ -99,7 +99,7 @@ export default class Game {
 
     animateDuck(timeElapsed) {
         for(let i = 0; i < this.duckArray.length; i++) {
-            if(i > 0) break;    // spawn 2 birds at a time
+            if(i > 1) break;    // spawn 2 birds at a time
             if(this.roundTime < 0) this.timerEl.innerHTML = `Time &nbsp;&nbsp 0)}`;
 
             let duck = this.duckArray[i];

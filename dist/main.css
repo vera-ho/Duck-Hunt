@@ -208,14 +208,14 @@ h1 {
   font-size: medium;
 }
 
-#sound-effects i:first-child {
+#sound-on {
   position: absolute;
   left: 65%;
   top: -20px;
   display: block;
 }
 
-#sound-effects i:last-child {
+#sound-off {
   position: absolute;
   left: 65%;
   top: -20px;

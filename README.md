@@ -56,12 +56,12 @@ Work on all the game logic.
     - Game-over logic
         - Missed hunts
         - Timer reaches zero
-- [ ] Sound effects
+- [X] Sound effects
 
 ## Day 6: Finish Up Overall Project
 - [ ] Complete any lingering tasks
 - [ ] Add bonus features if time allows
-- [ ] Deploy website
+- [X] Deploy website
 
 ## Day 7: Polish and Shine
 Make it pretty, make it glow.
@@ -83,7 +83,7 @@ The live project:
 - [ ] Ability to mute any sound effects
 
 Production README:
-- [ ] Link to live project 
+- [X] Link to live project 
 - [X] Instructions to play or interact with the project
 - [X] List of technologies, libraries, APIs used
 - [ ] Technical implementation details with clean code snippets

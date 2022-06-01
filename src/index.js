@@ -16,12 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     background.setColor("skyblue");
     foreground.setImage(foregroundPath);
 
-    // // Sound
-    // let soundTest = new GameAudio();
-    // setInterval(() => {
-    //     soundTest.shoot.play();
-    // }, 1)
-
     // Game
     let game = new Game(gameboard, foreground);
     splashImage(foreground, gameboard, game);

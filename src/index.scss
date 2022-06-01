@@ -116,6 +116,28 @@ h1 {
     font-size: medium;
 }
 
+// #sound-effects {
+//     position:absolute;
+//     left: 65%;
+//     top: -20px;
+// }
+
+#sound-effects i:first-child { 
+    position:absolute;
+    left: 65%;
+    top: -20px;
+    display: block;
+    // display: none;
+}
+
+#sound-effects i:last-child {
+    position:absolute;
+    left: 65%;
+    top: -20px;
+    // display:block;
+    display: none;
+}
+
 // Messages
 #message-container {
     position: absolute;

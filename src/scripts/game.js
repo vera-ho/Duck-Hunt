@@ -50,7 +50,7 @@ export default class Game {
         // Create dog
         this.dog = new Dog({
             pos: [0, 380],
-            vel: [1, 0],
+            vel: [2, 0],
             game: this,
             frameSize: 60,
             maxFrame: 5, 
@@ -61,7 +61,6 @@ export default class Game {
     }
 
     start() {
-        this.counterEl.style.zIndex = "5";
         this.animating = true;
         this.prevTime = performance.now();
         window.requestAnimationFrame(this.gameLoop.bind(this));
@@ -84,7 +83,7 @@ export default class Game {
 
             // Game over conditions
             if(this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) {
-                this.stopGame();
+                this.stop();
             }
         }
 
@@ -136,8 +135,7 @@ export default class Game {
             this.timer = 0;
         } else {
             this.dogIntro = false;
-            // this.roundTime = 15; 
-            // this.prevTime = performance.now();
+            this.counterEl.style.zIndex = "5";
         }
 
     }
@@ -170,7 +168,7 @@ export default class Game {
         window.requestAnimationFrame(this.gameLoop.bind(this));
     }
 
-    stopGame() {
+    stop() {
         this.animating = false;
     }
 }

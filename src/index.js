@@ -15,12 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
     background.setColor("skyblue");
     foreground.setImage(foregroundPath);
     let game = new Game(gameboard, foreground);
-    splashImage(foreground, game);
-    restartButtonListener(foreground, gameboard, game);
+    splashImage(foreground, gameboard, game);
 })
 
 //********************   Listeners   ********************//
-function splashImage(foreground, game) {
+function splashImage(foreground, gameboard, game) {
     let splashEl = document.getElementById("splash-container");
     document.addEventListener("click", () => {
         let fadeSplash = setInterval(() => {
@@ -30,19 +29,21 @@ function splashImage(foreground, game) {
             } else {
                 splashEl.remove();
                 clearInterval(fadeSplash);
-                playButtonListener(foreground, game);
+                playButtonListener(foreground, gameboard, game);
             }
         }, 100)
     }, { once: true })
 }
 
-function playButtonListener(foreground, game) {
+function playButtonListener(foreground, gameboard, game) {
     let playButton = document.getElementById("play-button");
     playButton.addEventListener("click", () => {
+        // debugger
         game.start();
         playButton.style.display = "none";
         huntEventListener(foreground, game);
         pauseButtonListener(game);
+        restartButtonListener(foreground, gameboard, game);
     }, { once: true });
 }
 
@@ -69,6 +70,7 @@ function restartButtonListener(foreground, gameboard, game) {
     let restartButton = document.getElementById("restart-button");
 
     restartButton.addEventListener("click", (e) => {
+        game.stop();
         restart(foreground, gameboard, game);
         let playButton = document.getElementById("play-button");
         playButton.style.display = "block";
@@ -80,11 +82,11 @@ function restart(foreground, gameboard, game) {
     foreground.canvas.removeEventListener("click", (e) => {  // not working
         huntEvent(e, foreground, game);
     })
-    gameboard.clear();
     game.counterEl.style.zIndex = "0";
-    game.restart;
+    gameboard.clear();
+    game.restart();
     game = new Game(gameboard, foreground);
-    playButtonListener(foreground, game);
+    playButtonListener(foreground, gameboard, game);
     // huntEventListener(foreground, game);
 }
 

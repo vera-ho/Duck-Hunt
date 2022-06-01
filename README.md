@@ -65,8 +65,8 @@ Work on all the game logic.
 
 ## Day 7: Polish and Shine
 Make it pretty, make it glow.
-- [ ] Clean up code
-- [ ] Clean up UI
+- [X] Clean up code
+- [X] Clean up UI
 
 # Bonus Features
 - [ ] Crossover with other game characters
@@ -80,7 +80,7 @@ The live project:
 - [X] Landing page/modal with clear instructions
 - [X] Interactive
 - [X] Styled, clean frontend
-- [ ] Ability to mute any sound effects
+- [X] Ability to mute any sound effects
 
 Production README:
 - [X] Link to live project 

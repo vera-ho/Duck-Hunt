@@ -100,6 +100,18 @@ export default class Duck extends MovingObject {
     }
 }
 
+// Animation Notes
+// this.ctx.drawImage(                          Parameter Type:
+//      ducks,                                  source
+//      col * frameSize + duckColOffset,        sprite target start x-pos
+//      row * frameSize + duckRowOffset,        sprite target start y-pos
+//      frameSize,                              sprite target img width
+//      frameSize,                              sprite target img height
+//      pos[0],                                 destination canvas x-pos
+//      pos[1],                                 destination canvas y-pos
+//      imgSize,                                final image size width 
+//      imgSize                                 final image size height
+//  );
 
 //set bird sprite, in constructor?
 // if abs(vel[1]) > 7
@@ -113,23 +125,10 @@ export default class Duck extends MovingObject {
 // row 1 = diagonal
 // row 2 = up
 // row 3 = shot and falling
-const HORIZONTAL = 0;
-const DIAGONAL = 1;
-const UP = 2
+// const HORIZONTAL = 0;
+// const DIAGONAL = 1;
+// const UP = 2
 const greenDuckPos = [127, 115];    // Green Duck - Slow
 const blueDuckPos = [0, 115];       // Blue Duck - Medium
 const redDuckPos = [256, 115];      // Red Duck - Fast
 // const spazzPos = [duckType, 235];
-
-// Animation Notes
-// this.ctx.drawImage(                          Parameter Type:
-//      ducks,                                  source
-//      col * frameSize + duckColOffset,        sprite target start x-pos
-//      row * frameSize + duckRowOffset,        sprite target start y-pos
-//      frameSize,                              sprite target img width
-//      frameSize,                              sprite target img height
-//      pos[0],                                 destination canvas x-pos
-//      pos[1],                                 destination canvas y-pos
-//      imgSize,                                final image size width 
-//      imgSize                                 final image size height
-//  );

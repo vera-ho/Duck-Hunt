@@ -8,7 +8,7 @@ const spritePath = "./assets/duckhunt_various_sheet.png";
 export default class Game {
 
     constructor(gameboard, foreground) {
-        this.NUM_DUCKS = 5;
+        this.NUM_DUCKS = 10;
         this.gameboard = gameboard;
         this.foreground = foreground;
         this.ctx = gameboard.ctx;
@@ -28,7 +28,7 @@ export default class Game {
         // Counters
         this.score = 0;
         this.ammo = 10;
-        this.roundTime = 15;
+        this.roundTime = 20;
         this.counterEl = document.getElementById("counter-container");
         this.scoreEl = document.getElementById("score-counter");
         this.ammoEl = document.getElementById("ammo-counter");
@@ -125,7 +125,7 @@ export default class Game {
                 this.duckArray = this.duckArray.filter( (ele, idx) => { 
                     return i !== idx;
                 })
-                break;
+                break;  // only allow one bird to be hunted at a time
             }
         }
     }
@@ -146,11 +146,10 @@ export default class Game {
             this.counterEl.style.zIndex = "5";
             this.timer = 0;
         }
-
     }
 
     updateCounters() {
-        this.roundTime = 15500 - this.timer;
+        this.roundTime = 20000 - this.timer;
         this.scoreEl.innerHTML = `Score &nbsp;${this.score * 1000}`;
         this.ammoEl.innerHTML =  `Ammo &nbsp;${this.ammo}`;
         this.timerEl.innerHTML = `Time &nbsp;&nbsp; ${Math.round(this.roundTime/1000)}`;
@@ -178,8 +177,9 @@ export default class Game {
     }
 
     stop() {
-        // UI Message
         this.animating = false;
+
+        // UI Message
         if(this.duckArray.length === 0 && !this.animating) { 
             this.message.innerHTML = "You Win";
             this.message.style.zIndex = "5";

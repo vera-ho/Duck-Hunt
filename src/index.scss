@@ -2,7 +2,6 @@
 @import "./styles/canvas";
 @import "./styles/navigation";
 
-
 // Fonts
 @font-face {
     font-family: duckhunt;
@@ -123,20 +122,16 @@ h1 {
 // }
 
 #sound-on {
-// #sound-effects i:first-child { 
     position:absolute;
     left: 65%;
     top: -20px;
     display: block;
-    // display: none;
 }
 
 #sound-off {
-// #sound-effects i:last-child {
     position:absolute;
     left: 65%;
     top: -20px;
-    // display:block;
     display: none;
 }
 

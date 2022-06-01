@@ -26,10 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function splashImage(foreground, gameboard, game) {
     let splashEl = document.getElementById("splash-container");
     document.addEventListener("click", () => {
-        // let sound = new GameAudio();
-        // sound.introSound.play();
         let fadeSplash = setInterval(() => {
             if(!splashEl.style.opacity) splashEl.style.opacity = 1;
+            
             if(splashEl.style.opacity > 0) {
                 splashEl.style.opacity -= 0.1;
             } else {
@@ -141,9 +140,7 @@ function huntEvent(e, foreground, game) {
             break;
 
         } else { // failed hunt
-            // decrease shot counter
             // console.log("Miss! Haha.")
-
             // animate laughing dog
 
         }

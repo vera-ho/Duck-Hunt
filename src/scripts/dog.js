@@ -73,7 +73,7 @@ export default class Dog extends MovingObject {
 
     // when player misses 3 shots and bird flies away
     laughAtPlayer() {
-
+        
     }
 
     // when player successfully hunts a duck

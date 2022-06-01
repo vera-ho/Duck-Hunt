@@ -71,16 +71,16 @@ export default class Game {
         let timeElapsed = (timestamp - this.prevTime);
         this.prevTime = timestamp;
         this.timer += timeElapsed;
-
-        if(!this.dogIntro) this.updateCounters();
-
+        
         if(timeElapsed > 16) {
             this.gameboard.clear();
 
             if(!this.dogIntro) {
+                this.updateCounters();
                 this.animateDuck(timeElapsed);
+            } else if(this.dogIntro) {
+                this.animateDog(timeElapsed);
             }
-            this.animateDog(timeElapsed);
 
             // Game over conditions
             if(this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) {
@@ -90,10 +90,9 @@ export default class Game {
 
         // UI Message
         if(this.duckArray.length === 0) { 
-            this.message.innerHTML = "You Win!";
+            this.message.innerHTML = "You Win";
             this.message.style.zIndex = "5";
         } else if(this.roundTime <= 0  || this.ammo === 0) {
-            console.log(this.roundTime)
             this.message.innerHTML = "Game Over";
             this.message.style.zIndex = "5";
         }
@@ -107,7 +106,7 @@ export default class Game {
     animateDuck(timeElapsed) {
         for(let i = 0; i < this.duckArray.length; i++) {
             if(i > 1) break;    // spawn max 2 birds at a time
-            if(this.roundTime < 0) this.timerEl = 0;
+            if(this.roundTime < 0) this.timerEl.innerHTML = `Time &nbsp;&nbsp0)}`;
 
             let duck = this.duckArray[i];
 
@@ -142,12 +141,16 @@ export default class Game {
         this.foreground.ctx.drawImage(this.fgimg, 0, 0, this.fgimg.width, this.fgimg.height, 0, 0, DIMX, DIMY);
 
         this.dog.move();
-        if(this.dog.pos[0] < 330) {
-            this.dog.walkToBushes(this.foreground.ctx, this.sprite, this.dog.pos, timeElapsed);
-            this.timer = 0;
-        } else {
+        if(this.dog.pos[0] < 240) {
+            this.dog.walkToBushes(this.foreground.ctx, this.sprite, timeElapsed);
+        } else if(this.dog.pos[0] >= 240 && this.dog.pos[0] <= 255) {
+            this.dog.perk(this.foreground.ctx, this.sprite);
+        } else if(this.dog.pos[0] > 255 && this.dog.pos[1] >= 270) {
+            this.dog.jump(this.foreground.ctx, this.sprite, timeElapsed);
+        } else if(this.dog.pos[1] < 270) {
             this.dogIntro = false;
             this.counterEl.style.zIndex = "5";
+            this.timer = 0;
         }
 
     }

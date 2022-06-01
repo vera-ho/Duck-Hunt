@@ -11,7 +11,7 @@ export default class Dog extends MovingObject {
     }
 
     // beginning of every round
-    walkToBushes(ctx, sprite, pos, time) {
+    walkToBushes(ctx, sprite, time) {
         this.timeElapsed += time;
         if(this.timeElapsed > 50) {
             this.timeElapsed = 0;
@@ -31,10 +31,46 @@ export default class Dog extends MovingObject {
             this.imgSize);
     }
 
-    jump () {
+    perk(ctx, sprite) {
 
+        ctx.drawImage(sprite, 
+            0, // this.spriteCol * this.frameSize,
+            this.frameSize - 5, // this.spriteRow * this.frameSize - 5,
+            this.frameSize, 
+            this.frameSize,
+            this.pos[0], 
+            this.pos[1], 
+            this.imgSize, 
+            this.imgSize);
+
+        if(this.pos[0] >= 250) {
+            this.vel[1] = -2.5;
+            this.maxFrame = 2;
+            this.spriteRow = 1;
+            this.spriteCol = 1;
+        }
     }
-    
+
+    jump(ctx, sprite, time) {
+        this.timeElapsed += time;
+        if(this.timeElapsed > 400) {
+            this.timeElapsed = 0;
+            this.spriteCol++;
+            // this.spriteCol = this.spriteCol % this.maxFrame;
+            if(this.spriteCol > this.maxFrame) this.spriteCol = 1;
+        }
+
+        ctx.drawImage(sprite, 
+            this.spriteCol * this.frameSize,
+            this.spriteRow * this.frameSize - 5,
+            this.frameSize, 
+            this.frameSize,
+            this.pos[0], 
+            this.pos[1], 
+            this.imgSize, 
+            this.imgSize);
+    }
+
     // when player misses 3 shots and bird flies away
     laughAtPlayer() {
 

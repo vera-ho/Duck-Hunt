@@ -1,6 +1,7 @@
 import Duck from "./duck";
 import Dog from "./dog";
 import { DIMX, DIMY } from "../index";
+import GameAudio from "./gameaudio";
 
 const spritePath = "./assets/duckhunt_various_sheet.png";
 
@@ -103,9 +104,9 @@ export default class Game {
             duck.move();
             if(duck.flying) {
                 if(duck.vel[0] < 0) {
-                    duck.draw(this.ctx, this.sprite, [-duck.pos[0], duck.pos[1]], timeElapsed);
+                    duck.draw(this.ctx, this.sprite, [-duck.pos[0], duck.pos[1]], timeElapsed), this.audio;
                 } else {
-                    duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed);
+                    duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed, this.audio);
                 }
             } else {
                 duck.timeElapsed += timeElapsed;

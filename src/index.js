@@ -1,5 +1,6 @@
 import Canvas from "./scripts/canvas";
 import Game from "./scripts/game";
+import GameAudio from "./scripts/gameaudio";
 
 const foregroundPath = "./assets/duckhunt_transparent_nicepng.png";
 
@@ -14,6 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     background.setColor("skyblue");
     foreground.setImage(foregroundPath);
+
+    // // Sound
+    // let soundTest = new GameAudio();
+    // setInterval(() => {
+    //     soundTest.shoot.play();
+    // }, 1)
 
     // Game
     let game = new Game(gameboard, foreground);
@@ -50,6 +57,9 @@ function playButtonListener(foreground, gameboard, game) {
 
 function huntEventListener(foreground, game) {
     foreground.canvas.addEventListener("click", (e) => {
+        let sound = new GameAudio();
+        sound.shoot.play();
+        // game.sound.shoot.play();
         if(game.animating && !game.dogIntro) huntEvent(e, foreground, game);
     })
 }

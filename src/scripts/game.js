@@ -21,7 +21,7 @@ export default class Game {
         this.timer = 0;
         this.dogIntro = true;
 
-        // counters
+        // Counters
         this.score = 0;
         this.ammo = 10;
         this.roundTime = 15;
@@ -71,7 +71,7 @@ export default class Game {
         let timeElapsed = (timestamp - this.prevTime);
         this.prevTime = timestamp;
         this.timer += timeElapsed;
-        
+
         if(timeElapsed > 16) {
             this.gameboard.clear();
 
@@ -88,16 +88,6 @@ export default class Game {
             }
         }
 
-        // UI Message
-        if(this.duckArray.length === 0) { 
-            this.message.innerHTML = "You Win";
-            this.message.style.zIndex = "5";
-        } else if(this.roundTime <= 0  || this.ammo === 0) {
-            this.message.innerHTML = "Game Over";
-            this.message.style.zIndex = "5";
-        }
-
-
         if(this.duckArray.length && this.animating) {
             window.requestAnimationFrame(this.gameLoop.bind(this));
         }
@@ -105,8 +95,8 @@ export default class Game {
 
     animateDuck(timeElapsed) {
         for(let i = 0; i < this.duckArray.length; i++) {
-            if(i > 1) break;    // spawn max 2 birds at a time
-            if(this.roundTime < 0) this.timerEl.innerHTML = `Time &nbsp;&nbsp0)}`;
+            if(i > 1) break;    // spawn 2 birds at a time
+            if(this.roundTime < 0) this.timerEl.innerHTML = `Time &nbsp;&nbsp 0)}`;
 
             let duck = this.duckArray[i];
 
@@ -159,7 +149,7 @@ export default class Game {
         this.roundTime = 15500 - this.timer;
         this.scoreEl.innerHTML = `Score &nbsp;${this.score * 1000}`;
         this.ammoEl.innerHTML =  `Ammo &nbsp;${this.ammo}`;
-        this.timerEl.innerHTML = `Time &nbsp;&nbsp;${Math.round(this.roundTime/1000)}`;
+        this.timerEl.innerHTML = `Time &nbsp;&nbsp; ${Math.round(this.roundTime/1000)}`;
         this.hit = false;
     }
 
@@ -184,6 +174,14 @@ export default class Game {
     }
 
     stop() {
+        // UI Message
+        if(this.duckArray.length === 0 && !this.animating) { 
+            this.message.innerHTML = "You Win";
+            this.message.style.zIndex = "5";
+        } else if((this.roundTime <= 0  || this.ammo === 0) && !this.animating) {
+            this.message.innerHTML = "Game Over";
+            this.message.style.zIndex = "5";
+        }
         this.animating = false;
     }
 }

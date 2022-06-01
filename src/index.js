@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     background.setColor("skyblue");
     foreground.setImage(foregroundPath);
+
+    // Game
     let game = new Game(gameboard, foreground);
     splashImage(foreground, gameboard, game);
 })
@@ -69,12 +71,11 @@ function restartButtonListener(foreground, gameboard, game) {
     let restartButton = document.getElementById("restart-button");
 
     restartButton.addEventListener("click", (e) => {
-        game.message.style.zIndex = "0";
         game.stop();
+        game.message.style.zIndex = "0";
         restart(foreground, gameboard, game);
         let playButton = document.getElementById("play-button");
         playButton.style.display = "block";
-        // pauseButtonListener(game);
     })
 }
 
@@ -87,7 +88,6 @@ function restart(foreground, gameboard, game) {
     game.restart();
     game = new Game(gameboard, foreground);
     playButtonListener(foreground, gameboard, game);
-    // huntEventListener(foreground, game);
 }
 
 // Player clicked on canvas to hunt

@@ -51,9 +51,8 @@ function playButtonListener(foreground, gameboard, game) {
 
 function huntEventListener(foreground, game) {
     foreground.canvas.addEventListener("click", (e) => {
-        let sound = new GameAudio();
-        sound.shoot.play();
-        // game.sound.shoot.play();
+        // let sound = new GameAudio();
+        // sound.shoot.play();
         if(game.animating && !game.dogIntro) huntEvent(e, foreground, game);
     })
 }

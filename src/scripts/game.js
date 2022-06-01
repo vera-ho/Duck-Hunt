@@ -176,6 +176,7 @@ export default class Game {
 
     stop() {
         // UI Message
+        this.animating = false;
         if(this.duckArray.length === 0 && !this.animating) { 
             this.message.innerHTML = "You Win";
             this.message.style.zIndex = "5";
@@ -183,6 +184,5 @@ export default class Game {
             this.message.innerHTML = "Game Over";
             this.message.style.zIndex = "5";
         }
-        this.animating = false;
     }
 }

@@ -31,6 +31,10 @@ export default class Dog extends MovingObject {
             this.imgSize);
     }
 
+    jump () {
+
+    }
+    
     // when player misses 3 shots and bird flies away
     laughAtPlayer() {
 

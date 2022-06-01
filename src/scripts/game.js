@@ -12,6 +12,7 @@ export default class Game {
         this.foreground = foreground;
         this.ctx = gameboard.ctx;
         this.hit = false;
+        this.message = document.getElementById("message-container");
         // this.round = 1;
 
         // Animation
@@ -86,6 +87,17 @@ export default class Game {
                 this.stop();
             }
         }
+
+        // UI Message
+        if(this.duckArray.length === 0) { 
+            this.message.innerHTML = "You Win!";
+            this.message.style.zIndex = "5";
+        } else if(this.roundTime <= 0  || this.ammo === 0) {
+            console.log(this.roundTime)
+            this.message.innerHTML = "Game Over";
+            this.message.style.zIndex = "5";
+        }
+
 
         if(this.duckArray.length && this.animating) {
             window.requestAnimationFrame(this.gameLoop.bind(this));

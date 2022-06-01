@@ -1,3 +1,250 @@
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:"";content:none}table{border-collapse:collapse;border-spacing:0}canvas{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);border:2px solid black}#canvas-background{z-index:2}#canvas-gameboard{z-index:3}#canvas-foreground{z-index:4}#navigation-bar{position:absolute;top:-3%;right:0px}#navigation-bar ul{display:flex}a{color:inherit}i{margin:3px;padding:5px;cursor:pointer}.hidden{display:none;background-color:black;margin:10px;padding:10px;width:300px;position:absolute;top:55px;right:3px;z-index:5}i:hover+.hidden{display:flex}@font-face{font-family:duckhunt;src:url(../assets/font/m29.TTF)}@font-face{font-family:dpcomic;src:url(../assets/font/dpcomic.ttf)}body{background-color:#2b3b48;background-image:url("../assets/nes_space.jpeg");background-repeat:repeat;color:#20b2aa;cursor:default}#splash-container{position:absolute;top:-5.5%;width:800px;height:600px;background-image:url("../assets/duckhunt_02.jpeg");background-size:cover;z-index:6}#lets-hunt{position:absolute;bottom:5%;left:50%;transform:translate(-50%, 0%);font-family:duckhunt,"Courier New",Courier,monospace;font-size:25px;text-align:center;background-color:#000;padding:10px;border:dashed #20b2aa 2px;z-index:6}#main-container{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);width:800px;height:600px}h1{font-size:45px;font-family:duckhunt,"Lucida Sans","Lucida Sans Regular","Lucida Grande","Lucida Sans Unicode",Geneva,Verdana,sans-serif;position:absolute;left:1px;top:-3%}#game-info{font-family:dpcomic,"Courier New",Courier,monospace;border:dashed #20b2aa 3px}#control-container{font-family:duckhunt,"Courier New",Courier,monospace;font-size:20px;cursor:pointer}#play-button{position:absolute;top:290px;left:400px;width:90px;transform:translate(-50%, -50%);z-index:5;font-family:duckhunt,"Courier New",Courier,monospace;text-align:center;background-color:#2b3b48;padding:10px;border:dashed #20b2aa 2px}#pause-button{position:absolute;left:400px;top:-15px;font-size:medium;padding-bottom:10px}#restart-button{position:absolute;top:10px;left:400px;font-size:medium}#counter-container{position:inherit;bottom:45px;left:10px;background-color:#000;border:dashed #20b2aa 3px;z-index:0}#score-counter,#ammo-counter,#time-counter{font-family:duckhunt,"Courier New",Courier,monospace;font-size:20px;padding:5px}#footnotes{font-size:16px;font-family:dpcomic,"Courier New",Courier,monospace;position:absolute;bottom:-1%;right:0;text-align:right}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
 
-/*# sourceMappingURL=main.css.map*/
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+}
+
+#canvas-background {
+  z-index: 2;
+}
+
+#canvas-gameboard {
+  z-index: 3;
+}
+
+#canvas-foreground {
+  z-index: 4;
+}
+
+#navigation-bar {
+  position: absolute;
+  top: -3%;
+  right: 0px;
+}
+
+#navigation-bar ul {
+  display: flex;
+}
+
+a {
+  color: inherit;
+}
+
+i {
+  margin: 3px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+  background-color: black;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  position: absolute;
+  top: 55px;
+  right: 3px;
+  z-index: 5;
+}
+
+i:hover + .hidden {
+  display: flex;
+}
+
+@font-face {
+  font-family: duckhunt;
+  src: url(../assets/font/m29.TTF);
+}
+@font-face {
+  font-family: dpcomic;
+  src: url(../assets/font/dpcomic.ttf);
+}
+body {
+  background-color: #2b3b48;
+  background-image: url("../assets/nes_space.jpeg");
+  background-repeat: repeat;
+  color: lightseagreen;
+  cursor: default;
+}
+
+#splash-container {
+  position: absolute;
+  top: -5.5%;
+  width: 800px;
+  height: 600px;
+  background-image: url("../assets/duckhunt_02.jpeg");
+  background-size: cover;
+  z-index: 6;
+}
+
+#lets-hunt {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  font-family: duckhunt, "Courier New", Courier, monospace;
+  font-size: 25px;
+  text-align: center;
+  background-color: black;
+  padding: 10px;
+  border: dashed lightseagreen 2px;
+  z-index: 6;
+}
+
+#main-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 600px;
+}
+
+h1 {
+  font-size: 45px;
+  font-family: duckhunt, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  position: absolute;
+  left: 1px;
+  top: -3%;
+}
+
+#game-info {
+  font-family: dpcomic, "Courier New", Courier, monospace;
+  border: dashed lightseagreen 3px;
+}
+
+#control-container {
+  font-family: duckhunt, "Courier New", Courier, monospace;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90px;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  font-family: duckhunt, "Courier New", Courier, monospace;
+  text-align: center;
+  background-color: #2b3b48;
+  padding: 10px;
+  border: dashed lightseagreen 2px;
+}
+
+#pause-button {
+  position: absolute;
+  left: 400px;
+  top: -15px;
+  font-size: medium;
+  padding-bottom: 10px;
+}
+
+#restart-button {
+  position: absolute;
+  top: 10px;
+  left: 400px;
+  font-size: medium;
+}
+
+#message-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  z-index: 0;
+  font-family: duckhunt, "Courier New", Courier, monospace;
+  text-align: center;
+  background-color: #2b3b48;
+  padding: 10px;
+  border: dashed lightseagreen 2px;
+}
+
+#counter-container {
+  position: inherit;
+  bottom: 45px;
+  left: 10px;
+  background-color: black;
+  border: dashed lightseagreen 3px;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+#score-counter,
+#ammo-counter,
+#time-counter {
+  font-family: duckhunt, "Courier New", Courier, monospace;
+  font-size: 20px;
+  padding: 5px;
+}
+
+#footnotes {
+  font-size: 16px;
+  font-family: dpcomic, "Courier New", Courier, monospace;
+  position: absolute;
+  bottom: -1%;
+  right: 0;
+  text-align: right;
+}

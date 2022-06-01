@@ -38,7 +38,6 @@ function splashImage(foreground, gameboard, game) {
 function playButtonListener(foreground, gameboard, game) {
     let playButton = document.getElementById("play-button");
     playButton.addEventListener("click", () => {
-        // debugger
         game.start();
         playButton.style.display = "none";
         huntEventListener(foreground, game);
@@ -70,6 +69,7 @@ function restartButtonListener(foreground, gameboard, game) {
     let restartButton = document.getElementById("restart-button");
 
     restartButton.addEventListener("click", (e) => {
+        game.message.style.zIndex = "0";
         game.stop();
         restart(foreground, gameboard, game);
         let playButton = document.getElementById("play-button");

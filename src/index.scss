@@ -89,8 +89,8 @@ h1 {
 
 #play-button {
     position: absolute;
-    top: 290px;
-    left: 400px;
+    top: 50%;
+    left: 50%;
     width: 90px;
     transform: translate(-50%, -50%);
     z-index: 5;
@@ -116,6 +116,21 @@ h1 {
     font-size: medium;
 }
 
+// Messages
+#message-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    z-index: 0;
+    font-family: $game-font, 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: #2b3b48;
+    padding: 10px;
+    border: dashed $main-color 2px;
+}
+
 // Counters
 #counter-container {
     position: inherit;
@@ -124,6 +139,7 @@ h1 {
     background-color: black;
     border: dashed $main-color 3px;
     z-index: 0;
+    opacity: 0.85;
 }
 
 #score-counter, 

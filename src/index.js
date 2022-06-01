@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function splashImage(foreground, gameboard, game) {
     let splashEl = document.getElementById("splash-container");
     document.addEventListener("click", () => {
+        // let sound = new GameAudio();
+        // sound.introSound.play();
         let fadeSplash = setInterval(() => {
             if(!splashEl.style.opacity) splashEl.style.opacity = 1;
             if(splashEl.style.opacity > 0) {
@@ -43,6 +45,12 @@ function playButtonListener(foreground, gameboard, game) {
     playButton.addEventListener("click", () => {
         game.start();
         playButton.style.display = "none";
+
+        if(game.soundOn) {
+            let sound = new GameAudio();
+            sound.introSound.play();
+        }
+
         huntEventListener(foreground, game);
         pauseButtonListener(game);
         restartButtonListener(foreground, gameboard, game);
@@ -51,8 +59,11 @@ function playButtonListener(foreground, gameboard, game) {
 
 function huntEventListener(foreground, game) {
     foreground.canvas.addEventListener("click", (e) => {
-        let sound = new GameAudio();
-        sound.shoot.play();
+        if(game.soundOn) {
+            let sound = new GameAudio();
+            sound.shoot.play();
+        }
+        
         if(game.animating && !game.dogIntro) huntEvent(e, foreground, game);
     })
 }

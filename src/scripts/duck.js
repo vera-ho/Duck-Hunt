@@ -1,5 +1,6 @@
 import MovingObject from "./moving_object";
 import { DIMX, DIMY } from "../index";
+import GameAudio from "./gameaudio";
 
 export default class Duck extends MovingObject {
     constructor(obj) {
@@ -16,6 +17,7 @@ export default class Duck extends MovingObject {
         // unique to duck
         this.flying = true;
         this.timeElapsed = 0;
+        this.flapTime = 0;
         this.type = obj.type;       // bird color
 
         // this.vel = this.randomVelocity(10);
@@ -46,7 +48,7 @@ export default class Duck extends MovingObject {
         }
     }
 
-    flap(time) {
+    flap(time, soundOn) {
         this.timeElapsed += time;
         if(this.timeElapsed > 90) {
             this.timeElapsed = 0;
@@ -54,10 +56,17 @@ export default class Duck extends MovingObject {
             this.spriteCol = this.spriteCol % this.maxFrame;
             if(this.spriteCol > this.maxFrame) this.spriteCol = 0;
         }
+
+        this.flapTime += time;
+        if(this.flapTime > 360 && soundOn) {
+            let sound = new GameAudio();
+            sound.duckFlap.play();
+            this.flapTime = 0;
+        }
     }
 
-    draw(ctx, sprite, pos, time) {
-        this.flap(time);
+    draw(ctx, sprite, pos, time, soundOn) {
+        this.flap(time, soundOn);
         ctx.save();
         if(this.vel[0] < 0) ctx.scale(-1, 1);
         ctx.drawImage(sprite, 

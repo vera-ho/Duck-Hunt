@@ -178,7 +178,7 @@ export default class Game {
         this.gameboard.clear();
         this.hit = false;
 
-        this.prevTime = 0;
+        // this.prevTime = 0;
         this.animating = false;
         this.timer = 0;
         this.dogIntro = true;
@@ -202,6 +202,7 @@ export default class Game {
 
     stop() {
         this.animating = false;
+        this.soundOn = false;
 
         // UI Message
         if(this.duckArray.length === 0 && !this.animating) { 

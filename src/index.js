@@ -100,8 +100,8 @@ function restart(foreground, gameboard, game) {
     game.counterEl.style.zIndex = "0";
     gameboard.clear();
     game.restart();
-    game = new Game(gameboard, foreground);
-    playButtonListener(foreground, gameboard, game);
+    newGame = new Game(gameboard, foreground);
+    playButtonListener(foreground, gameboard, newGame);
 }
 
 // Player clicked on canvas to hunt

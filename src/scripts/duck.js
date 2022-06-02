@@ -19,8 +19,6 @@ export default class Duck extends MovingObject {
         this.timeElapsed = 0;
         this.flapTime = 0;
         this.type = obj.type;       // bird color
-
-        // this.vel = this.randomVelocity(10);
     }
 
     // Starting random x position

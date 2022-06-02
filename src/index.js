@@ -18,9 +18,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Game
     let game = new Game(gameboard, foreground);
-    splashImage(foreground, gameboard, game);
-    soundToggleListener(game);
+    // splashImage(foreground, gameboard, game);
+    // soundToggleListener(game);
+    test(background);
 })
+
+
+// TEST LISTENER
+
+function test(canvas) {
+    console.log("test function");
+    document.addEventListener("click", testListener);
+    let count = 0;
+
+    function testListener(e) {
+        console.log("test listener");
+        console.log(e)
+        console.log(canvas);
+        count++;
+        console.log(count)
+
+        if(count === 5) {
+            console.log("remove!")
+            document.removeEventListener("click", testListener);
+        }
+    }
+}
+
+// END TEST
 
 //********************   Listeners   ********************//
 function splashImage(foreground, gameboard, game) {
@@ -168,3 +193,6 @@ function soundToggleListener(game) {
         }
     })
 }
+
+
+

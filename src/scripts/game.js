@@ -28,9 +28,11 @@ export default class Game {
         // Counters
         this.score = 0;
         this.ammo = 10;
+        // this.roundTime = 20500;
         this.roundTime = 20;
         this.counterEl = document.getElementById("counter-container");
         this.scoreEl = document.getElementById("score-counter");
+        this.duckCountEl = document.getElementById("duck-counter");
         this.ammoEl = document.getElementById("ammo-counter");
         this.timerEl = document.getElementById("time-counter");
 
@@ -97,6 +99,18 @@ export default class Game {
         }
     }
 
+    createDucks() {
+        for(let i = 0; i < this.NUM_DUCKS; i++) {
+            let vx = Math.random() * 3 + 2;
+            let vy = Math.random() * 2 + 1;
+            let duck = new Duck({
+                game: this,
+                vel: [vx, vy]
+            });
+            this.duckArray.push(duck);
+        }
+    }
+
     animateDuck(timeElapsed) {
         for(let i = 0; i < this.duckArray.length; i++) {
             if(i > 1) break;    // spawn 2 birds at a time
@@ -149,21 +163,31 @@ export default class Game {
     }
 
     updateCounters() {
+        // let roundTime = this.roundTime - this.timer;
         this.roundTime = 20000 - this.timer;
         this.scoreEl.innerHTML = `Score &nbsp;${this.score * 1000}`;
+        this.duckCountEl.innerHTML = `Ducks &nbsp;${this.duckArray.length}`
         this.ammoEl.innerHTML =  `Ammo &nbsp;${this.ammo}`;
-        this.timerEl.innerHTML = `Time &nbsp;&nbsp; ${Math.round(this.roundTime/1000)}`;
+        // this.timerEl.innerHTML = `Time &nbsp;&nbsp; ${Math.floor(roundTime/1000)}`;
+        this.timerEl.innerHTML = `Time &nbsp;&nbsp; ${Math.floor(this.roundTime/1000)}`;
         this.hit = false;
     }
 
     restart() {
-        this.duckArray = [];
+        // Reset game variables
+        this.gameboard.clear();
         this.hit = false;
+
+        this.prevTime = 0;
         this.animating = false;
         this.timer = 0;
+        this.dogIntro = true;
         this.score = 0;
         this.ammo = 10;
-        this.roundTime = 15;
+        this.roundTime = 20;
+        
+        this.duckArray = [];
+        // this.createDucks();
     }
 
     pause() {
@@ -181,6 +205,7 @@ export default class Game {
 
         // UI Message
         if(this.duckArray.length === 0 && !this.animating) { 
+            this.updateCounters();
             this.message.innerHTML = "You Win";
             this.message.style.zIndex = "5";
         } else if((this.roundTime <= 0  || this.ammo === 0) && !this.animating) {

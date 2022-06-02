@@ -28,7 +28,7 @@ function splashImage(foreground, gameboard, game) {
     document.addEventListener("click", () => {
         let fadeSplash = setInterval(() => {
             if(!splashEl.style.opacity) splashEl.style.opacity = 1;
-            
+
             if(splashEl.style.opacity > 0) {
                 splashEl.style.opacity -= 0.1;
             } else {

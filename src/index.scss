@@ -52,6 +52,7 @@ body {
     padding: 10px;
     border: dashed $main-color 2px;
     z-index: 6;
+    opacity: 0.95;
 }
 
 // Main Section
@@ -162,6 +163,7 @@ h1 {
 }
 
 #score-counter, 
+#duck-counter,
 #ammo-counter, 
 #time-counter {
     font-family: $game-font, 'Courier New', Courier, monospace;

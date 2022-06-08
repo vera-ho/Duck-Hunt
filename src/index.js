@@ -100,7 +100,7 @@ function restart(foreground, gameboard, game) {
     game.counterEl.style.zIndex = "0";
     gameboard.clear();
     game.restart();
-    newGame = new Game(gameboard, foreground);
+    let newGame = new Game(gameboard, foreground);
     playButtonListener(foreground, gameboard, newGame);
 }
 

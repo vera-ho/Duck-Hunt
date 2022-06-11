@@ -69,7 +69,6 @@ export default class GameView {
         let game = this.game;
 
         function stopListener() {
-            console.log('stop listener');
             canvas.removeEventListener("click", huntEvent)
         }
         this.huntEventListener.stopListener = stopListener;

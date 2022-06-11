@@ -15,7 +15,33 @@ export default class GameView {
 
     start() {
         this.playButtonListener();
+        this.soundToggleListener();
     }
+
+    soundToggleListener() {
+        let game = this.game;
+        let toggle = document.getElementById("sound-effects");
+        let soundOn = document.getElementById("sound-on");
+        let mute = document.getElementById("sound-off");
+        toggle.addEventListener("click", toggleSound)
+
+        function toggleSound() {
+            if(soundOn.style.display !== "none") {
+                soundOn.style.display = "none";
+                mute.style.display = "block";
+                game.soundOn = false;
+            } else {
+                soundOn.style.display = "block";
+                mute.style.display = "none";
+                game.soundOn = true;
+            }
+        }
+
+        function removeListener() {
+            toggle.removeEventListener("click", toggleSound);
+        }
+        this.soundToggleListener.removeListener = removeListener;
+    } 
 
     playButtonListener() {
         this.playButton.addEventListener("click", () => {
@@ -149,4 +175,6 @@ export default class GameView {
         let view = new GameView(newGame, foreground, gameboard);
         view.start();
     }
+
+   
 }

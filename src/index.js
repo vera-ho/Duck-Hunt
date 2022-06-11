@@ -1,6 +1,6 @@
 import Canvas from "./scripts/canvas";
 import Game from "./scripts/game";
-import GameAudio from "./scripts/gameaudio";
+// import GameAudio from "./scripts/gameaudio";
 import GameView from "./scripts/gameview";
 
 const foregroundPath = "./assets/duckhunt_transparent_nicepng.png";
@@ -19,11 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let game = new Game(gameboard, foreground);
     let view = new GameView(game, foreground, gameboard);
     splashImage(view);
-    soundToggleListener(game);
+    // soundToggleListener(game);
 })
 
 
-//********************   Listeners   ********************//
 function splashImage(view) {                     
     let splashEl = document.getElementById("splash-container");
     document.addEventListener("click", () => {
@@ -40,23 +39,3 @@ function splashImage(view) {
         }, 100)
     }, { once: true })
 }
-
-function soundToggleListener(game) {
-    let toggle = document.getElementById("sound-effects");
-    let soundOn = document.getElementById("sound-on");
-    let mute = document.getElementById("sound-off");
-    toggle.addEventListener("click", () => {
-        if(soundOn.style.display !== "none") {
-            soundOn.style.display = "none";
-            mute.style.display = "block";
-            game.soundOn = false;
-        } else {
-            soundOn.style.display = "block";
-            mute.style.display = "none";
-            game.soundOn = true;
-        }
-    })
-}
-
-
-

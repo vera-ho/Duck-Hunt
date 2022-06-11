@@ -175,7 +175,7 @@ export default class Game {
 
     restart() {
         // Reset game variables
-        this.gameboard.clear();
+        // this.gameboard.clear();
         this.hit = false;
 
         // this.prevTime = 0;
@@ -215,3 +215,4 @@ export default class Game {
         }
     }
 }
+

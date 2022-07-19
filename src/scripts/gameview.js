@@ -11,6 +11,9 @@ export default class GameView {
         this.playButton = document.getElementById("play-button");
         this.pauseButton = document.getElementById("pause-button");
         this.restartButton = document.getElementById("restart-button");
+
+        this.sound = new GameAudio();
+        game.sound = this.sound;
     }
 
     start() {
@@ -19,21 +22,24 @@ export default class GameView {
     }
 
     soundToggleListener() {
-        let game = this.game;
+        // let game = this.game;
         let toggle = document.getElementById("sound-effects");
         let soundOn = document.getElementById("sound-on");
-        let mute = document.getElementById("sound-off");
+        let soundOff = document.getElementById("sound-off");
+        let sound = this.sound;
         toggle.addEventListener("click", toggleSound)
 
         function toggleSound() {
             if(soundOn.style.display !== "none") {
                 soundOn.style.display = "none";
-                mute.style.display = "block";
-                game.soundOn = false;
+                soundOff.style.display = "block";
+                sound.mute();
+                // game.soundOn = false;
             } else {
                 soundOn.style.display = "block";
-                mute.style.display = "none";
-                game.soundOn = true;
+                soundOff.style.display = "none";
+                sound.unmute();
+                // game.soundOn = true;
             }
         }
 
@@ -45,14 +51,16 @@ export default class GameView {
 
     playButtonListener() {
         this.playButton.addEventListener("click", () => {
-            let sound = new GameAudio();
-            if(this.game.soundOn) {
-                sound.introSound.play();
-            } else {
-                if(!sound) return;
-                sound.introSound.pause();
-            }
+            // let sound = new GameAudio();
+            // let sound = this.sound;
+            // if(this.game.soundOn) {
+            //     sound.introSound.play();
+            // } else {
+            //     if(!sound) return;
+            //     sound.introSound.pause();
+            // }
 
+            this.sound.introSound.play();
             this.game.start();
             this.playButton.style.display = "none";
 
@@ -65,8 +73,9 @@ export default class GameView {
     huntEventListener() {
         let canvas = this.foreground.canvas;
         canvas.addEventListener("click", huntEvent)
-        let count = 0;
+        // let count = 0;
         let game = this.game;
+        let sound = this.sound;
 
         function stopListener() {
             canvas.removeEventListener("click", huntEvent)
@@ -74,13 +83,12 @@ export default class GameView {
         this.huntEventListener.stopListener = stopListener;
     
         function huntEvent(e) {
-            let sound = new GameAudio();
-            if(game.soundOn) {
-                sound.shoot.play();
-            } else {
-                sound.shoot.pause();
-            }
-    
+            // let sound = new GameAudio();
+            // if(game.soundOn) {
+            sound.shoot.pause();
+            sound.shoot.currentTime = 0;
+            sound.shoot.play();
+
             if(game.animating && !game.dogIntro) {
                 let bound = canvas.getBoundingClientRect();
                 let hit_x = e.clientX - bound.left;
@@ -106,7 +114,7 @@ export default class GameView {
                        hit_y < yUpBound && hit_y > yLowBound) {
             
                         // Stop flying animation
-                        console.log("Hit!")
+                        // console.log("Hit!")
                         duck.vel = [0, 0];
                         duck.flying = false;
                         game.score++; 

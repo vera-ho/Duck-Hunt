@@ -46,7 +46,8 @@ export default class Duck extends MovingObject {
         }
     }
 
-    flap(time, soundOn) {
+    // flap(time, soundOn) {
+    flap(time, sound) {
         this.timeElapsed += time;
         if(this.timeElapsed > 90) {
             this.timeElapsed = 0;
@@ -56,15 +57,20 @@ export default class Duck extends MovingObject {
         }
 
         this.flapTime += time;
-        if(this.flapTime > 360 && soundOn) {
-            let sound = new GameAudio();
+        // if(this.flapTime > 360 && soundOn) {
+        if(this.flapTime > 360) {
+
+            // let sound = new GameAudio();
+            sound.duckFlap.pause();
+            sound.duckFlap.currentTime = 0;
             sound.duckFlap.play();
             this.flapTime = 0;
         }
     }
 
-    draw(ctx, sprite, pos, time, soundOn) {
-        this.flap(time, soundOn);
+    // draw(ctx, sprite, pos, time, soundOn) {
+    draw(ctx, sprite, pos, time, sound) {
+        this.flap(time, sound);
         ctx.save();
         if(this.vel[0] < 0) ctx.scale(-1, 1);
         ctx.drawImage(sprite, 

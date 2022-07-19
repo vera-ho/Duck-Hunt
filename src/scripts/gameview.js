@@ -19,26 +19,26 @@ export default class GameView {
     }
 
     soundToggleListener() {
-        let game = this.game;
+        // let game = this.game;
         let toggle = document.getElementById("sound-effects");
         let soundOn = document.getElementById("sound-on");
         let mute = document.getElementById("sound-off");
-        toggle.addEventListener("click", toggleSound)
+        toggle.addEventListener("click", toggleSound.bind(this))
 
         function toggleSound() {
             if(soundOn.style.display !== "none") {
                 soundOn.style.display = "none";
                 mute.style.display = "block";
-                game.soundOn = false;
+                this.game.soundOn = false;
             } else {
                 soundOn.style.display = "block";
                 mute.style.display = "none";
-                game.soundOn = true;
+                this.game.soundOn = true;
             }
         }
 
         function removeListener() {
-            toggle.removeEventListener("click", toggleSound);
+            toggle.removeEventListener("click", toggleSound.bind(this));
         }
         this.soundToggleListener.removeListener = removeListener;
     } 

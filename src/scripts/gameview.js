@@ -24,15 +24,12 @@ export default class GameView {
         let soundOn = document.getElementById("sound-on");
         let mute = document.getElementById("sound-off");
         toggle.addEventListener("click", toggleSound)
-        // toggle.addEventListener("click", toggleSound.bind(this))
 
         function toggleSound() {
             if(soundOn.style.display !== "none") {
                 soundOn.style.display = "none";
                 mute.style.display = "block";
                 game.soundOn = false;
-
-                // this.game.soundOn = false;
             } else {
                 soundOn.style.display = "block";
                 mute.style.display = "none";
@@ -41,9 +38,7 @@ export default class GameView {
         }
 
         function removeListener() {
-            // toggle.removeEventListener("click", toggleSound.bind(this));
             toggle.removeEventListener("click", toggleSound);
-
         }
         this.soundToggleListener.removeListener = removeListener;
     } 
@@ -152,26 +147,29 @@ export default class GameView {
         let gameboard = this.gameboard;
         let foreground = this.foreground;
         let huntEventListener = this.huntEventListener;
+        let removeSoundListener = this.soundToggleListener;
         let playButton = this.playButton;
         let pauseButton = this.pauseButton;
         let newGame = this.newGame;
-        let removeSoundListener = this.soundToggleListener;
-
+        let soundOn = document.getElementById("sound-on");
         let restartButton = document.getElementById("restart-button");
+
         restartButton.addEventListener("click", restart);
 
         function restart() {
             game.stop();
             game.message.style.zIndex = "0";
 
+            // remove old listeners
             huntEventListener.stopListener();
             restartButton.removeEventListener("click", restart);
-            // debugger
             removeSoundListener.removeListener();
 
             if(pauseButton.innerHTML === 'Resume') {
                 pauseButton.innerHTML = 'Pause'
             }
+
+            if(soundOn.style.display === 'none')
 
             game.counterEl.style.zIndex = "0";
             gameboard.clear();

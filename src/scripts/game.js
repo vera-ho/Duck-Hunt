@@ -181,7 +181,7 @@ export default class Game {
         // this.prevTime = 0;
         this.animating = false;
         this.timer = 0;
-        this.dogIntro = true;
+        if(this.soundOn) this.dogIntro = true;
         this.score = 0;
         this.ammo = 10;
         this.roundTime = 20;

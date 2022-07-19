@@ -1,6 +1,5 @@
 import MovingObject from "./moving_object";
 import { DIMX, DIMY } from "../index";
-import GameAudio from "./gameaudio";
 
 export default class Duck extends MovingObject {
     constructor(obj) {
@@ -46,7 +45,6 @@ export default class Duck extends MovingObject {
         }
     }
 
-    // flap(time, soundOn) {
     flap(time, sound) {
         this.timeElapsed += time;
         if(this.timeElapsed > 90) {
@@ -57,10 +55,7 @@ export default class Duck extends MovingObject {
         }
 
         this.flapTime += time;
-        // if(this.flapTime > 360 && soundOn) {
         if(this.flapTime > 360) {
-
-            // let sound = new GameAudio();
             sound.duckFlap.pause();
             sound.duckFlap.currentTime = 0;
             sound.duckFlap.play();
@@ -68,11 +63,13 @@ export default class Duck extends MovingObject {
         }
     }
 
-    // draw(ctx, sprite, pos, time, soundOn) {
     draw(ctx, sprite, pos, time, sound) {
+        const greenDuckPos = [127, 115];
         this.flap(time, sound);
+
         ctx.save();
         if(this.vel[0] < 0) ctx.scale(-1, 1);
+
         ctx.drawImage(sprite, 
                 this.spriteCol * this.frameSize + greenDuckPos[0], 
                 this.spriteRow * this.frameSize + greenDuckPos[1], 
@@ -132,7 +129,7 @@ export default class Duck extends MovingObject {
 // const HORIZONTAL = 0;
 // const DIAGONAL = 1;
 // const UP = 2
-const greenDuckPos = [127, 115];    // Green Duck - Slow
-const blueDuckPos = [0, 115];       // Blue Duck - Medium
-const redDuckPos = [256, 115];      // Red Duck - Fast
+// const greenDuckPos = [127, 115];    // Green Duck - Slow
+// const blueDuckPos = [0, 115];       // Blue Duck - Medium
+// const redDuckPos = [256, 115];      // Red Duck - Fast
 // const spazzPos = [duckType, 235];

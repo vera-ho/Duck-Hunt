@@ -139,6 +139,11 @@ export default class GameView {
                 game.resume();
             }
         }
+
+        function removeListener() {
+            pauseButton.removeEventListener("click", buttonEvent);
+        }
+        this.pauseButtonListener.removeListener = removeListener;
     }
 
     restartButtonListener() {
@@ -146,7 +151,8 @@ export default class GameView {
         let gameboard = this.gameboard;
         let foreground = this.foreground;
         let huntEventListener = this.huntEventListener;
-        let removeSoundListener = this.soundToggleListener;
+        let soundListener = this.soundToggleListener;
+        let pauseListener = this.pauseButtonListener;
         let playButton = this.playButton;
         let pauseButton = this.pauseButton;
         let newGame = this.newGame;
@@ -163,7 +169,8 @@ export default class GameView {
             // remove old listeners
             huntEventListener.stopListener();
             restartButton.removeEventListener("click", restart);
-            removeSoundListener.removeListener();
+            pauseListener.removeListener();
+            soundListener.removeListener();
 
             if(pauseButton.innerHTML === 'Resume') {
                 pauseButton.innerHTML = 'Pause'

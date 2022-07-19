@@ -24,7 +24,6 @@ export default class Game {
 
         // Sound
         this.sound = null;;
-        // this.soundOn = true;
 
         // Counters
         this.score = 0;
@@ -123,10 +122,8 @@ export default class Game {
             if(duck.flying) {
                 if(duck.vel[0] < 0) {
                     duck.draw(this.ctx, this.sprite, [-duck.pos[0], duck.pos[1]], timeElapsed, this.sound);
-                    // duck.draw(this.ctx, this.sprite, [-duck.pos[0], duck.pos[1]], timeElapsed, this.soundOn);
                 } else {
                     duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed, this.sound);
-                    // duck.draw(this.ctx, this.sprite, duck.pos, timeElapsed, this.soundOn);
                 }
             } else {
                 duck.timeElapsed += timeElapsed;
@@ -184,7 +181,6 @@ export default class Game {
         // this.prevTime = 0;
         this.animating = false;
         this.timer = 0;
-        // if(this.soundOn) 
         this.dogIntro = true;
         this.score = 0;
         this.ammo = 10;
@@ -206,7 +202,6 @@ export default class Game {
 
     stop() {
         this.animating = false;
-        // this.soundOn = false;
 
         // UI Message
         if(this.duckArray.length === 0 && !this.animating) { 

@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let game = new Game(gameboard, foreground);
     let view = new GameView(game, foreground, gameboard);
     splashImage(view);
-    // soundToggleListener(game);
 })
 
 

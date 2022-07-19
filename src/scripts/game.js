@@ -22,7 +22,7 @@ export default class Game {
         this.dogIntro = true;
 
         // Sound
-        this.sound = null;;
+        this.sound;
 
         // Counters
         this.score = 0;

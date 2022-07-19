@@ -3,19 +3,18 @@
 # Play now! [Duck Hunt](https://vh71886.github.io/Duck-Hunt/)
 
 # Background
-Duck Hunt is an 80's retro game where the player takes Dog to go duck hunting. In this project to create a clone of the game, the player will "hunt" the flying ducks using their mouse or trackpad. Points are given for successful hunts and the player has 3 lives - or 3 misses - before the game over.
+Duck Hunt is an 80's retro game where the player takes Dog to go duck hunting. In this project to create a clone of the game, the player will "hunt" the flying ducks using their mouse or trackpad. Points are given for successful hunts and the player has limited ammo. The game is over when time runs out, the user runs out of ammo or all ducks are hunted.
 
 # Functionality
 In Duck Hunt, users will be able to:
 * Use a trackpad or mouse click to hunt a duck
 * Gain points when successfully hunting
-* Lose a life if the duck is missed
-* Lose the round if the time limit runs out
+* Lose ammo per hunt attempt
+* Lose the game if the time limit runs out
 
 In addition, this project will include:
-* Background music
-* Dog sound effects
-* Button to toggle sounds ON/OFF
+* Sound effects
+* Mute and unmute sound effects
 
 # Wireframes
 ![Wireframe](https://i.imgur.com/WmzEkKc.png)
@@ -59,7 +58,7 @@ Work on all the game logic.
 - [X] Sound effects
 
 ## Day 6: Finish Up Overall Project
-- [ ] Complete any lingering tasks
+- [X] Complete any lingering tasks
 - [ ] Add bonus features if time allows
 - [X] Deploy website
 

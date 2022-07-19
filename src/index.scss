@@ -116,24 +116,12 @@ h1 {
     font-size: medium;
 }
 
-// #sound-effects {
-//     position:absolute;
-//     left: 65%;
-//     top: -20px;
-// }
-
-#sound-on {
-    position:absolute;
-    left: 65%;
-    top: -20px;
-    display: block;
-}
-
+#sound-on,
 #sound-off {
     position:absolute;
-    left: 65%;
+    left: 64%;
     top: -20px;
-    display: none;
+    display: block;
 }
 
 // Messages

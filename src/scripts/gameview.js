@@ -119,7 +119,7 @@ export default class GameView {
                 }
             
                 if(!game.hit && game.ammo > 0 && game.animating) {
-                    console.log("Miss! Haha.")
+                    // console.log("Miss! Haha.")
                     game.ammo--;
                 } 
             }
@@ -147,18 +147,29 @@ export default class GameView {
         let gameboard = this.gameboard;
         let foreground = this.foreground;
         let huntEventListener = this.huntEventListener;
+        let removeSoundListener = this.soundToggleListener;
         let playButton = this.playButton;
+        let pauseButton = this.pauseButton;
         let newGame = this.newGame;
-
+        let soundOn = document.getElementById("sound-on");
         let restartButton = document.getElementById("restart-button");
+
         restartButton.addEventListener("click", restart);
 
         function restart() {
             game.stop();
             game.message.style.zIndex = "0";
 
+            // remove old listeners
             huntEventListener.stopListener();
             restartButton.removeEventListener("click", restart);
+            removeSoundListener.removeListener();
+
+            if(pauseButton.innerHTML === 'Resume') {
+                pauseButton.innerHTML = 'Pause'
+            }
+
+            if(soundOn.style.display === 'none')
 
             game.counterEl.style.zIndex = "0";
             gameboard.clear();
@@ -175,5 +186,4 @@ export default class GameView {
         view.start();
     }
 
-   
 }

@@ -1,7 +1,10 @@
 import MovingObject from "./moving_object";
 import { DIMX, DIMY } from "../index";
 
+const greenDuckPos = [127, 115];
+
 export default class Duck extends MovingObject {
+    
     constructor(obj) {
         if(!obj.type) obj.type = "green";
         if(!obj.spriteRow) obj.spriteRow = 0;
@@ -64,9 +67,7 @@ export default class Duck extends MovingObject {
     }
 
     draw(ctx, sprite, pos, time, sound) {
-        const greenDuckPos = [127, 115];
         this.flap(time, sound);
-
         ctx.save();
         if(this.vel[0] < 0) ctx.scale(-1, 1);
 

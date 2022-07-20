@@ -178,7 +178,6 @@ export default class GameView {
             game.restart();
 
             playButton.style.display = "block";
-            game.message.style.display = 'none';
             game.message.style.zIndex = "0";
             newGame(foreground, gameboard, sound);
         }

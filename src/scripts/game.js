@@ -89,6 +89,7 @@ export default class Game {
 
             // Game over conditions
             if((this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) && this.animating) {
+                console.log("stop")
                 this.animating = false;
                 this.stop();
             }
@@ -177,7 +178,6 @@ export default class Game {
         // Reset game variables
         // this.gameboard.clear();
         this.hit = false;
-
         // this.prevTime = 0;
         this.animating = false;
         this.timer = 0;
@@ -185,7 +185,6 @@ export default class Game {
         this.score = 0;
         this.ammo = 10;
         this.roundTime = 20;
-        
         this.duckArray = [];
         // this.createDucks();
     }
@@ -202,11 +201,11 @@ export default class Game {
 
     stop() {
         // UI Message
-        if(this.duckArray.length === 0 && !this.animating) { 
+        if(this.duckArray.length === 0) { 
             this.updateCounters();
             this.message.innerHTML = "You Win";
             this.message.style.zIndex = "5";
-        } else if((this.roundTime <= 0  || this.ammo === 0) && !this.animating) {
+        } else if((this.roundTime <= 0  || this.ammo === 0)) {
             this.message.innerHTML = "Game Over";
             this.message.style.zIndex = "5";
         }

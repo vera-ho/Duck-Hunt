@@ -88,7 +88,8 @@ export default class Game {
             }
 
             // Game over conditions
-            if(this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) {
+            if((this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) && this.animating) {
+                this.animating = false;
                 this.stop();
             }
         }
@@ -200,8 +201,6 @@ export default class Game {
     }
 
     stop() {
-        this.animating = false;
-
         // UI Message
         if(this.duckArray.length === 0 && !this.animating) { 
             this.updateCounters();

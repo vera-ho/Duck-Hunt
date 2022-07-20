@@ -28,8 +28,6 @@ export default class GameView {
         let sound = this.sound;
         toggle.addEventListener("click", toggleSound)
 
-        console.log("soundOn: " + soundOn.style.display)
-
         if(soundOn.style.display === "none") {
             sound.mute();
         } else {
@@ -157,14 +155,13 @@ export default class GameView {
         let pauseButton = this.pauseButton;
         let newGame = this.newGame;
         let sound = this.sound;
-        let soundOn = document.getElementById("sound-on");
         let restartButton = document.getElementById("restart-button");
 
         restartButton.addEventListener("click", restart);
 
         function restart() {
-            game.stop();
-            game.message.style.zIndex = "0";
+            // game.stop();
+            game.animating = false;
 
             // remove old listeners
             huntEventListener.stopListener();
@@ -176,24 +173,21 @@ export default class GameView {
                 pauseButton.innerHTML = 'Pause'
             }
 
-            if(soundOn.style.display === 'none')
-
             game.counterEl.style.zIndex = "0";
             gameboard.clear();
             game.restart();
 
             playButton.style.display = "block";
+            game.message.style.display = 'none';
+            game.message.style.zIndex = "0";
             newGame(foreground, gameboard, sound);
-
         }
     }
 
-    newGame(foreground, gameboard, sound) {
+    newGame(foreground, gameboard) {
         let newGame = new Game(gameboard, foreground);
         let view = new GameView(newGame, foreground, gameboard);
         view.start();
-        // view.sound = sound;
-        // view.game.sound = sound;
     }
 
 }

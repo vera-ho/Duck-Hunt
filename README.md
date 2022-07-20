@@ -48,6 +48,47 @@ Create classes for the UI, the Dog, bird objects, the timer, the life count and 
 - [X] Render the timer, life count and score count
     - Graphics only, not operational at this time
 
+### Code Snippets: Duck Animation
+``` javascript
+// Ducks have a randomized starting position behind the bushes
+randomPosition() {
+    let pos = [];
+    pos[0] = Math.floor(Math.random() * DIMX);
+    pos[1] = DIMY - (2.5 * this.frameSize);
+    return pos;
+}
+
+// When a duck hits the bounds of the canvas, it will flip it's direction
+bounce(pos) {
+    if(pos[0] < 0 || pos[0] > DIMX) {
+        this.vel[0] = -this.vel[0];
+    }
+    if(pos[1] < 0 || pos[1] > DIMY - (2.5 * this.frameSize)) {
+        this.vel[1] = -this.vel[1];
+    }
+}
+
+// Natural flight movement required a slower change in sprite position than frame rate
+flap(time, sound) {
+    this.timeElapsed += time;
+    if(this.timeElapsed > 90) {
+        this.timeElapsed = 0;
+        this.spriteCol++;
+        this.spriteCol = this.spriteCol % this.maxFrame;
+        if(this.spriteCol > this.maxFrame) this.spriteCol = 0;
+    }
+
+    this.flapTime += time;
+    if(this.flapTime > 360) {
+        sound.duckFlap.pause();
+        sound.duckFlap.currentTime = 0;
+        sound.duckFlap.play();
+        this.flapTime = 0;
+    }
+}
+```
+
+
 ## Day 3 - 5: All Game Logic
 Work on all the game logic.
 - [X] Bird movement logic
@@ -58,6 +99,88 @@ Work on all the game logic.
         - Missed hunts
         - Timer reaches zero
 - [X] Sound effects
+
+### Code Snippets: Game Logic
+``` javascript
+// The basic game loop: animate a frame until a game over condition has been reached
+// Each frame will animate the duck, counters, and dog accordingly
+gameLoop(timestamp) {
+    let timeElapsed = (timestamp - this.prevTime);
+    this.prevTime = timestamp;
+    this.timer += timeElapsed;
+
+    if(timeElapsed > 16) {
+        this.gameboard.clear();
+
+        if(!this.dogIntro) {
+            this.updateCounters();
+            this.animateDuck(timeElapsed);
+        } else if(this.dogIntro) {
+            this.animateDog(timeElapsed);
+        }
+
+        // Game over conditions
+        if((this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) && this.animating) {
+            console.log("stop")
+            this.animating = false;
+            this.stop();
+        }
+    }
+
+    if(this.duckArray.length && this.animating) {
+        window.requestAnimationFrame(this.gameLoop.bind(this));
+    }
+}
+```
+
+### Code Snippets: Event Listeners
+``` javascript
+// The play button and splash page listeners only run once. The restart button will set a new single use play button listener
+playButtonListener() {
+    this.playButton.addEventListener("click", () => {
+        this.sound.introSound.play();
+        this.game.start();
+        this.playButton.style.display = "none";
+
+        this.huntEventListener();
+        this.pauseButtonListener();
+        this.restartButtonListener();
+    }, { once: true });
+}
+
+// Some listeners need to be removed at the end of each game
+soundToggleListener() {
+    let toggle = document.getElementById("sound-effects");
+    let soundOn = document.getElementById("sound-on");
+    let soundOff = document.getElementById("sound-off");
+    let sound = this.sound;
+    toggle.addEventListener("click", toggleSound)
+
+    if(soundOn.style.display === "none") {
+        sound.mute();
+    } else {
+        sound.unmute();
+    }
+
+    function toggleSound() {
+        if(soundOn.style.display !== "none") {
+            soundOn.style.display = "none";
+            soundOff.style.display = "block";
+            sound.mute();
+        } else {
+            soundOn.style.display = "block";
+            soundOff.style.display = "none";
+            sound.unmute();
+        }
+    }
+
+    function removeListener() {
+        toggle.removeEventListener("click", toggleSound);
+    }
+    this.soundToggleListener.removeListener = removeListener;
+} 
+
+```
 
 ## Day 6: Finish Up Overall Project
 - [X] Complete any lingering tasks
@@ -87,7 +210,7 @@ Production README:
 - [X] Link to live project 
 - [X] Instructions to play or interact with the project
 - [X] List of technologies, libraries, APIs used
-- [ ] Technical implementation details with clean code snippets
+- [X] Technical implementation details with clean code snippets
 - [X] To-dos and future features
 - [X] No .DS_store files, debugger, console.logs
 - [X] Organized file structure with /src and /dist directories

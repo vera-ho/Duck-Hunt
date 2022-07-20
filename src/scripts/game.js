@@ -89,7 +89,6 @@ export default class Game {
 
             // Game over conditions
             if((this.ammo < 1 || this.duckArray.length === 0 || this.roundTime < 0) && this.animating) {
-                console.log("stop")
                 this.animating = false;
                 this.stop();
             }

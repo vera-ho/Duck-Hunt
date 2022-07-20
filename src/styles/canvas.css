@@ -16,4 +16,5 @@ canvas {
 
 #canvas-foreground {
     z-index: 4;
+    cursor: default;
 }

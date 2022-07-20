@@ -53,10 +53,13 @@ export default class GameView {
     } 
 
     playButtonListener() {
+        let canvas = document.getElementById("canvas-foreground");
+
         this.playButton.addEventListener("click", () => {
             this.sound.introSound.play();
             this.game.start();
             this.playButton.style.display = "none";
+            canvas.style.cursor = "crosshair";
 
             this.huntEventListener();
             this.pauseButtonListener();
@@ -156,12 +159,13 @@ export default class GameView {
         let newGame = this.newGame;
         let sound = this.sound;
         let restartButton = document.getElementById("restart-button");
+        let canvas = document.getElementById("canvas-foreground");
 
         restartButton.addEventListener("click", restart);
 
         function restart() {
-            // game.stop();
             game.animating = false;
+            canvas.style.cursor = "default";
 
             // remove old listeners
             huntEventListener.stopListener();

@@ -5,6 +5,8 @@
 # Background
 Duck Hunt is an 80's retro game where the player takes Dog to go duck hunting. In this project to create a clone of the game, the player will "hunt" the flying ducks using their mouse or trackpad. Points are given for successful hunts and the player has limited ammo. The game is over when time runs out, the user runs out of ammo or all ducks are hunted.
 
+![Demo](./assets/duck-hunt-demo.gif)
+
 # Functionality
 In Duck Hunt, users will be able to:
 * Use a trackpad or mouse click to hunt a duck
